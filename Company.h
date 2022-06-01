@@ -21,9 +21,9 @@ namespace ULIFB
             id(id),
             value((double)id) // maybe better to convert the integer into a double
         {}
-        ~Company();
-        Company(const Company& comp);
-        Company& operator=(const Company& comp);
+        ~Company() = default;
+        Company(const Company& comp) = default;
+        Company& operator=(const Company& comp) = default;
         MultiStructures& getEmployeesMultiStructures();
         int getCompanyId();
                                 // the following fuctions are potentially not needed! //

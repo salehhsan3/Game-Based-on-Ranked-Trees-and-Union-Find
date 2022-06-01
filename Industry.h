@@ -22,7 +22,7 @@ namespace ULIFB
             number_of_companies(number_of_companies)
         {}
 
-        ~Industry();
+        ~Industry() = default;
 
         Industry(const Industry& ind) = default;
 

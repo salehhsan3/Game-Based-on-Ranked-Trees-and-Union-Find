@@ -21,7 +21,7 @@ namespace ULIFB
         int sum_of_grades_for_emp_with_no_salary;
         int grade_bump_for_zero_salary;
     public:
-        MultiStructures();
+        MultiStructures() = default; // is default the correct implementation?
         ~MultiStructures() = default;
         MultiStructures(const MultiStructures& multistruct) = default;
         MultiStructures& operator=(const MultiStructures& multistruct) = default;
