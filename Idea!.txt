@@ -1,0 +1,29 @@
+maybe the Modified tree should be a tree of SalaryRanges such that:\
+each node includes a bump to the grade of those under it!\
+in addition, given two SalaryRanges (lower1,higher1) and (lower2,higher2)\
+bool operator==(const SalaryRange& other)
+{
+	return( (this->lower == other.lower) && (this->higher == other.higher) )
+}
+
+bool operator<(const SalaryRange& other)
+{
+	if(this->lower == other.lower)
+	{
+		return(this->higher < other.higher);
+	}
+	if(this->higher == other.higher)
+	{
+		return(this->lower < other.lower);
+	}
+	// otherwise the ranges are either entirely contained within each other or foreign to each other
+	return(this->lower < other.lower)
+}
+
+bool operator<(const SalaryRange& other)
+{
+	return( !( (*this) < other ) && !( (*this) == other ) )
+}
+
+when uniting 2 companies we have to unite these trees aswell?\
+or can we just change the grades of each employee according to the range he's in to contain the true grade?
