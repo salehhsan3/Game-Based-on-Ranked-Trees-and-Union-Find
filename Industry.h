@@ -24,7 +24,7 @@ namespace ULIFB
 
         {}
 
-        ~Industry();
+        ~Industry() = default;
 
         Industry(const Industry& ind) = default;
 
