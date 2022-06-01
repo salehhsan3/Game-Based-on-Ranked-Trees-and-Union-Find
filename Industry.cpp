@@ -24,7 +24,8 @@ namespace ULIFB
 
     int Industry::getNumberOfCompanies()
     {
-        return this->number_of_companies;
+        return
+        (this->number_of_companies);
     }
 
     StatusType Industry::RemoveEmployee(int employeeID)

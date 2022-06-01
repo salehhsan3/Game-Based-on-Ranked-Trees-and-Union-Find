@@ -2,7 +2,8 @@
 
     void *Init(int k)
     {
-        return static_cast<void*>(new ULIFB::Industry(k));
+        
+        return (k > 0) ? static_cast<void*>(new ULIFB::Industry(k)) : NULL; // if k <= 0 it's considered as FAILURE!
     }
 
     StatusType AddEmployee(void *DS, int employeeID, int companyID, int grade)

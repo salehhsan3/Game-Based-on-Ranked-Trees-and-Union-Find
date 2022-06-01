@@ -15,12 +15,13 @@ namespace ULIFB
     {
     private:
         int number_of_companies;
-        // UnionFind for the companies
-        // Hashtable for the companies
+        // UnionFind companies_union; // for the companies
+        // Hashtable companies_hash; // for the companies only includes the "owners"
         MultiStructures employees;
     public:
         Industry(int number_of_companies):
             number_of_companies(number_of_companies)
+
         {}
 
         ~Industry() = default;
