@@ -118,7 +118,8 @@ static commandType CheckCommand(const char* const command,
     };
     for (int index = 0; index < numActions; index++) {
         if (StrCmp(commandStr[index], command)) {
-            *command_arg = command + strlen(commandStr[index]) + 1;
+            // *command_arg = command + strlen(commandStr[index]) + 1;
+            *command_arg = command + strlen(commandStr[index]);//potentially wrong!-saleh used to be +1
             return ((commandType) index);
         };
     };
@@ -338,6 +339,14 @@ static errorType OnSumOfBumpGradeBetweenTopWorkersByGroup (void* DS, const char*
     /*
      * Implement here the printing of the variable
      */
+
+    if (res == SUCCESS)
+    {
+        void **sum_ptr = &sumBumpGrade;
+        int to_print = (*(int *)sum_ptr);//somehow works!
+        printf("CompanyValue: %d\n", to_print);
+    
+    }
     return error_free;
 }
 
@@ -362,6 +371,13 @@ static errorType OnAverageBumpGradeBetweenSalaryByGroup (void* DS, const char* c
     /*
      * Implement here the printing of the variable
      */
+    if (res == SUCCESS)
+    {
+        void **average_ptr = &averageBumpGrade;
+        int to_print = (*(int *)average_ptr);//somehow works!
+        printf("CompanyValue: %d\n", to_print);
+    }
+
     return error_free;
 }
 
@@ -373,8 +389,8 @@ static errorType OnCompanyValue(void* DS, const char* const command) {
     int companyID;
     ValidateRead(sscanf(command, "%d %d %d", &companyID), 1,
                  "CompanyValue failed.\n");
-    void* standing;
-    StatusType res = CompanyValue(DS, companyID, &standing);
+    void* standing; // possibly wrong
+    StatusType res = CompanyValue(DS, companyID, &standing);// possibly wrong
 
     if (res != SUCCESS) {
         printf("CompanyValue: %s\n", ReturnValToStr(res));
@@ -384,6 +400,18 @@ static errorType OnCompanyValue(void* DS, const char* const command) {
     /*
      * Implement here the printing of the variable
      */
+    if (res == SUCCESS)
+    {
+        void **standing_ptr = &standing;
+        double to_print = (*(double *)standing_ptr);//somehow works!
+        if (to_print == (int)to_print)
+        {
+            printf("CompanyValue: %d\n", (int)to_print);
+            return error_free;
+        }
+        
+        printf("CompanyValue: %lf\n", to_print);
+    }
 
     return error_free;
 }
@@ -391,8 +419,8 @@ static errorType OnCompanyValue(void* DS, const char* const command) {
 /***************************************************************************/
 /* OnBumpGradeToEmployees                                                        */
 /***************************************************************************/
-/*
- * 20 points Bonus function:
+// /*
+// * 20 points Bonus function:
 static errorType OnBumpGradeToEmployees(void* DS, const char* const command) {
     int lowerSalary;
     int higherSalary;
@@ -410,7 +438,7 @@ static errorType OnBumpGradeToEmployees(void* DS, const char* const command) {
 
     return error_free;
 }
-*/
+// */
 
 /***************************************************************************/
 /* OnQuit                                                                  */
