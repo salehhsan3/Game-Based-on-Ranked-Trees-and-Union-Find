@@ -88,6 +88,7 @@ namespace ULIFB
 
     StatusType Industry::SumOfBumpGradeBetweenTopWorkersByGroup(int companyID, int m, void * sumBumpGrade)
     {
+        // complexity is O(log*(k) + log(n))
         if (companyID < 0 || companyID > this->getNumberOfCompanies() || m <= 0)
         {
             return INVALID_INPUT;

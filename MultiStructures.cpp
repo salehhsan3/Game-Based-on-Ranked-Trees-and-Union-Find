@@ -56,6 +56,7 @@ namespace ULIFB
             this->sum_of_grades_for_emp_with_no_salary-=emp_to_find->getEmployeeGrade();
             emp_to_find->increaseSalary(increase);
             this->employees_with_salary.addNode(SalaryID(emp_to_find->getEmployeeSalary(),emp_id),emp_to_find,emp_to_find->getEmployeeGrade()); // im not sure if this is the correct implementation. ie, maybe we should pass salary or something else instead of level!
+            return;
         }
         else if (emp_to_find->getEmployeeSalary() > 0)
         {
@@ -73,6 +74,7 @@ namespace ULIFB
 
     int MultiStructures::SumOfBumpGradeBetweenTopWorkersByGroup(int number_of_top_workers)
     {
+        // complexity is O(log*(k) + log(n))
         shared_ptr<Employee> *emp_to_find =  this->employees_with_salary.Select(employees_with_salary.root,number_of_top_workers)->data;
         if (emp_to_find == nullptr)
         {
