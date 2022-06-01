@@ -6,19 +6,20 @@
 #define UNION_FIND_UNION_FIND_H
 
 #include "UpTreeNode.h"
-#include "group_class.h"
+#include "Company.h"
 
-class UnionFind {
+namespace ULIFB
+{
+    class UnionFind {
 public:
-    Up_Tree_node<int ,group_class*>** elements;
+    Up_Tree_node<int ,Company*>** elements;
     int size;
-    int scale;
 
-    explicit UnionFind(int size, int scale) : size(size), scale(scale) {
-        elements = new Up_Tree_node<int ,group_class*>*[size+1];
+    explicit UnionFind(int size) : size(size) {
+        elements = new Up_Tree_node<int ,Company*>*[size+1];
         for(int i=0; i <= size; i++){
-            auto* new_group = new group_class(i,scale);
-            auto* new_node = new Up_Tree_node<int, group_class*>(i, new_group, nullptr, 1);
+            auto* new_group = new Company(i);
+            auto* new_node = new Up_Tree_node<int, Company*>(i, new_group, nullptr, 1);
             elements[i] = new_node;
         }
     }
@@ -30,12 +31,12 @@ public:
         delete[](elements);
     }
 
-    Up_Tree_node<int, group_class*>* UnionGroups(int key1, int key2){
+    Up_Tree_node<int, Company*>* UnionGroups(int key1, int key2){
         if(key1 > size || key2 > size || key1 == key2){
             return nullptr;
         }
-        Up_Tree_node<int,group_class*>* root1 = find(key1);
-        Up_Tree_node<int,group_class*>* root2 = find(key2);
+        Up_Tree_node<int,Company*>* root1 = find(key1);
+        Up_Tree_node<int,Company*>* root2 = find(key2);
 
         if(root1->parent != nullptr || root2->parent != nullptr || root2 == root1){
             return nullptr;
@@ -53,23 +54,24 @@ public:
         return root2;
     }
 
-    Up_Tree_node<int, group_class *> *find(int key){
+    Up_Tree_node<int, Company *> *find(int key){
         if(key > size) {
             return nullptr;
         }
-        Up_Tree_node<int, group_class*>* root = elements[key];
+        Up_Tree_node<int, Company*>* root = elements[key];
         while(root->parent != nullptr){
             root = root->parent;
         }
-        Up_Tree_node<int, group_class*>* curr_node = elements[key];
+        Up_Tree_node<int, Company*>* curr_node = elements[key];
         while(curr_node->parent != nullptr) {
-            Up_Tree_node<int, group_class*> *tmp = curr_node->parent;
+            Up_Tree_node<int, Company*> *tmp = curr_node->parent;
             curr_node->parent = root;
             curr_node = tmp;
         }
         return root;
     }
 };
+} // namespace ULIFB
 
 
 #endif //UNION_FIND_UNION_FIND_H
