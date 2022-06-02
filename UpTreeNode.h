@@ -13,26 +13,14 @@ public:
     Data data;
     Up_Tree_node<Key, Data> *parent;
     int size;
+    double offset; // additional info - saleh
 
-    Up_Tree_node(Key key, Data data,  Up_Tree_node<Key, Data> *parent, int size=1) : key(key),
-    data(data), parent(parent), size(size){}
+    Up_Tree_node(Key key, Data data,  Up_Tree_node<Key, Data> *parent, int size=1, int offset = 0) : key(key),
+    data(data), parent(parent), size(size), offset(offset){}
 
     ~ Up_Tree_node();
 
     void setData(Data new_data);
-    /*
-    bool operator!=(const Up_Tree_node<Key, Data> &rhs) const;
-
-    bool operator==(const Up_Tree_node<Key, Data> &rhs) const;
-
-    bool operator<(const Up_Tree_node<Key, Data> &rhs) const;
-
-    bool operator>(const Up_Tree_node<Key, Data> &rhs) const;
-
-    bool operator<=(const Up_Tree_node<Key, Data> &rhs) const;
-
-    bool operator>=(const Up_Tree_node<Key, Data> &rhs) const;
-     */
 
 };
 

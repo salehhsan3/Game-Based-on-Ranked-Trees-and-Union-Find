@@ -24,7 +24,12 @@ namespace ULIFB
             companies_union(UnionFind(number_of_companies)),
             companies_hash(),
             employees()
-        {}
+        {
+            for (int i = 1; i <= number_of_companies; i++)
+            {
+                companies_hash.addElement(i,make_shared<Company>(companies_union.elements_array[i])); // gets companies from the elements array and makes them shared_ptr! - correct implementation?
+            }
+        }
 
         ~Industry() = default;
 

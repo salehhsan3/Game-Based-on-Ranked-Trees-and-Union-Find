@@ -6,6 +6,11 @@
 
 namespace ULIFB
 {
+    int Industry::getNumberOfCompanies()
+    {
+        return
+        (this->number_of_companies);
+    }
 
     MultiStructures& Industry::getEmployeesMultiStructures()
     {
@@ -22,15 +27,9 @@ namespace ULIFB
         return SUCCESS;
     }
 
-    int Industry::getNumberOfCompanies()
-    {
-        return
-        (this->number_of_companies);
-    }
-
     StatusType Industry::RemoveEmployee(int employeeID)
     {
-        // complexity is O(log(n))!
+        // complexity is O(log(n)) on average
         if (employeeID <= 0)
         {
             return INVALID_INPUT;
@@ -60,7 +59,7 @@ namespace ULIFB
 
     StatusType Industry::EmployeeSalaryIncrease(int employeeID, int salaryIncrease)
     {
-        // complexity is O(log(n))!
+        // complexity is O(log(n))! on average
         if (employeeID <= 0  || salaryIncrease <= 0)
         {
             return INVALID_INPUT;
@@ -88,7 +87,7 @@ namespace ULIFB
 
     StatusType Industry::SumOfBumpGradeBetweenTopWorkersByGroup(int companyID, int m, void * sumBumpGrade)
     {
-        // complexity is O(log*(k) + log(n))
+        // complexity is O(log*(k) + log(n)) amortized on average
         if (companyID < 0 || companyID > this->getNumberOfCompanies() || m <= 0)
         {
             return INVALID_INPUT;
@@ -120,11 +119,19 @@ namespace ULIFB
 
     StatusType Industry::CompanyValue(int companyID, void * standing)
     {
+        // complexity is O(log*(k)) amortized
         if (standing == nullptr || companyID <= 0 || (companyID > this->getNumberOfCompanies()) )
         {
             return INVALID_INPUT;
         }
-        
+
+        Company* comp_to_find = companies_union.find(companyID)->data;
+        // we know that the company has to exist because its ID is legal therefore there's no need to check if it was found.
+        double owner_value = comp_to_find->getCompanyValue();
+        double offset = companies_union.findOffSet(companyID);
+        double real_value = owner_value - offset;
+        (*(double *)standing) = real_value;
+
         return SUCCESS; 
         
     }
@@ -135,7 +142,6 @@ namespace ULIFB
         {
             return INVALID_INPUT;
         }
-        
         
         return SUCCESS;
     }

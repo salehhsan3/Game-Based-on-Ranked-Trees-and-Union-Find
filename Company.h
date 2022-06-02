@@ -25,6 +25,8 @@ namespace ULIFB
         Company& operator=(const Company& comp) = default;
         MultiStructures& getEmployeesMultiStructures();
         int getCompanyId();
+        double getCompanyValue();
+        void IncreaseCompanyValue(double increase);
                                 // the following fuctions are potentially not needed! //
         // shared_ptr<Employee>& findEmployee(SalaryID sal_id); 
         // void addEmployee(SalaryID sal_id, shared_ptr<Employee>& emp_to_add);

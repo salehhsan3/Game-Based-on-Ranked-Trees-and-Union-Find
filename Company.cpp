@@ -16,6 +16,17 @@ namespace ULIFB
     {
         return(this->id);
     }
+
+    double Company::getCompanyValue()
+    {
+        return(this->value);
+    }
+
+    void Company::IncreaseCompanyValue(double increase)
+    {
+        this->value+=increase;
+    }
+    
     
     // void Company::addEmployee(SalaryID sal_id, shared_ptr<Employee>& emp_to_add)
     // {

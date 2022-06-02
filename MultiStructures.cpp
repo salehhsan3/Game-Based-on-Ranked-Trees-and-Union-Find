@@ -78,7 +78,7 @@ namespace ULIFB
         shared_ptr<Employee> *emp_to_find =  this->employees_with_salary.Select(employees_with_salary.root,number_of_top_workers)->data;
         if (emp_to_find == nullptr)
         {
-            return -1; // only returns this if the employee was not found!
+            return -1; // only returns this if the employee was not found! ie, there's no employee whose rank in number_of_top_worker!
         }
         return(this->employees_with_salary.findSumSmaller(emp_to_find->get()->getEmployeeSalaryID())); // is this the correct implementation of finding the sum of sons?
         
