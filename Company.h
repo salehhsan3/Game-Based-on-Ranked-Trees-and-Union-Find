@@ -16,9 +16,10 @@ namespace ULIFB
         double value;
         MultiStructures employees;
     public:
-        Company(int id):
+        Company(int id = 0):
             id(id),
-            value((double)id) // maybe better to convert the integer into a double
+            value((double)id), // maybe better to convert the integer into a double
+            employees()
         {}
         ~Company() = default;
         Company(const Company& comp) = default;

@@ -9,6 +9,7 @@ namespace ULIFB
 {
     void MultiStructures::addEmployee(SalaryID sal_id,shared_ptr<Employee>& emp_to_add)
     {
+
         
     }
 
@@ -69,7 +70,7 @@ namespace ULIFB
 
     void MultiStructures::promoteEmployee(int emp_id, int bump)
     {
-
+        
     }
 
     int MultiStructures::SumOfBumpGradeBetweenTopWorkersByGroup(int number_of_top_workers)
@@ -86,7 +87,7 @@ namespace ULIFB
 
     double MultiStructures::AverageBumpGradeBetweenSalaryByGroup(int lowerSalary, int higherSalary)
     {
-
+        return 0;
     }
 
 } // namespace ULIFB

@@ -7,7 +7,7 @@
 
 #include "Employee.h"
 #include "AO_AVL_Tree.h"
-#include "AO_AVL_Tree_Modified.h"
+// #include "AO_AVL_Tree_Modified.h"
 #include "hashtable.h"
 
 namespace ULIFB
@@ -16,7 +16,7 @@ namespace ULIFB
     {
     private:
         hash_table<shared_ptr<Employee>> employees; // hashtable for all the employees 
-        AVL_Tree_Modified<SalaryID,shared_ptr<Employee>> employees_with_salary; //ranktree for employees with salary>0 bonus version
+        // AVL_Tree_Modified<SalaryID,shared_ptr<Employee>> employees_with_salary; //ranktree for employees with salary>0 bonus version
         AVL_Tree<SalaryID,shared_ptr<Employee>> employees_with_salary; //ranktree for employees with salary>0
         int number_of_employees_with_no_salary;
         int sum_of_grades_for_emp_with_no_salary;

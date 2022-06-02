@@ -27,7 +27,9 @@ namespace ULIFB
         {
             for (int i = 1; i <= number_of_companies; i++)
             {
-                companies_hash.addElement(i,make_shared<Company>(companies_union.elements_array[i])); // gets companies from the elements array and makes them shared_ptr! - correct implementation?
+                companies_hash.addElement(i,shared_ptr<Company>(companies_union.elements[i]->data)); // gets companies from the elements array and makes them shared_ptr! - correct implementation?
+                // maybe consider inserting Company* into the hashtable instead of shared_ptr
+                // we just initialized the UnionFind above therefore we can use elements as if it hasn't been altered yet!
             }
         }
 

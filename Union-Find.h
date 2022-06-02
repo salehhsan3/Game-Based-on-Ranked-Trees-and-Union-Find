@@ -18,10 +18,10 @@ public:
 
     explicit UnionFind(int size) : size(size) {
         elements = new Up_Tree_node<int ,Company*>*[size+1];
-        elements_array = new Company*[size+1]; // saleh
+        // elements_array = new Company*[size+1]; // saleh
         for(int i=0; i <= size; i++){
             auto* new_group = new Company(i);
-            elements_array[i] = new_group; // saleh
+            // elements_array[i] = new_group; // saleh
             auto* new_node = new Up_Tree_node<int, Company*>(i, new_group, nullptr, 1);
             elements[i] = new_node;
         }
@@ -29,12 +29,12 @@ public:
     ~UnionFind(){
         for(int i = 0; i <= size; i++){
             delete elements[i];
-            delete elements_array[i]; // saleh
+            // delete elements_array[i]; // saleh
             elements[i] = nullptr;
-            elements_array[i] = nullptr;
+            // elements_array[i] = nullptr; // saleh
         }
         delete[](elements);
-        delete[](elements_array); // saleh
+        // delete[](elements_array); // saleh
     }
 
     Up_Tree_node<int, Company*>* UnionGroups(int key1, int key2){
