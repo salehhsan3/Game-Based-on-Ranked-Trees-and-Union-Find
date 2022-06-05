@@ -19,12 +19,14 @@ namespace ULIFB
         // hash_table<shared_ptr<Company>> companies_hash; // for the companies only includes the "owners"
         // instead of using a hashtable we'll just save the root of the group in the union find as the company_id of employee
         MultiStructures employees;
+        int max_id;
     public:
         Industry(int number_of_companies):
             number_of_companies(number_of_companies),
             companies_union(UnionFind(number_of_companies)),
             // companies_hash(),
-            employees()
+            employees(),
+            max_id(0)
         {
             // for (int i = 1; i <= number_of_companies; i++)
             // {
