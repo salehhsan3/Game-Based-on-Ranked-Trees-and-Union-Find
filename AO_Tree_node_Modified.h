@@ -11,14 +11,14 @@
 #define MAX(a,b) ((a)>(b)?(a):(b))
 
 template<class Key, class Data>
-class tree_node{
+class tree_node_modified{
 public:
     // fields
     Key *key;
     Data *data;
-    tree_node<Key, Data> *parent;
-    tree_node<Key, Data> *left_son;
-    tree_node<Key, Data> *right_son;
+    tree_node_modified<Key, Data> *parent;
+    tree_node_modified<Key, Data> *left_son;
+    tree_node_modified<Key, Data> *right_son;
     int height;
     int sons_num;
     int sum;
@@ -26,28 +26,28 @@ public:
     // int grade_nump; //new field - all nodes in this node's sub tree receive a grade bump of this value. -saleh
 
     //methods
-    tree_node(Key key, Data data, tree_node *parent, tree_node *left_son, tree_node *right_son, int height = 0,
+    tree_node_modified(Key key, Data data, tree_node_modified *parent, tree_node_modified *left_son, tree_node_modified *right_son, int height = 0,
               int sons_num = 1, int sum = 0, int sons_sum = 0):
     key(new Key(key)), data(new Data(data)), parent(parent), left_son(left_son), right_son(right_son), height(height)
     , sons_num(sons_num), sum(sum), sons_sum(sons_sum){}
 
-    ~tree_node();
+    ~tree_node_modified();
 
     void setData(Data* new_data);
 
-    bool operator==(const tree_node &node_to_cmp) const;
+    bool operator==(const tree_node_modified &node_to_cmp) const;
 
-    bool operator!=(const tree_node &node_to_cmp) const;
+    bool operator!=(const tree_node_modified &node_to_cmp) const;
 
-    bool operator<(const tree_node &node_to_cmp) const;
+    bool operator<(const tree_node_modified &node_to_cmp) const;
 
-    bool operator<=(const tree_node &node_to_cmp) const;
+    bool operator<=(const tree_node_modified &node_to_cmp) const;
 
-    bool operator>(const tree_node &node_to_cmp) const;
+    bool operator>(const tree_node_modified &node_to_cmp) const;
 
-    bool operator>=(const tree_node &node_to_cmp) const;
+    bool operator>=(const tree_node_modified &node_to_cmp) const;
 
-   //tree_node<Key, Data>& operator=(tree_node<Key,Data> *tree_node);
+   //tree_node_modified<Key, Data>& operator=(tree_node_modified<Key,Data> *tree_node_modified);
 
     void updateHeight();
 
@@ -57,13 +57,13 @@ public:
 
     int getBalance();
 
-    static void printInorder(std::ostream &out, tree_node *node);
+    static void printInorder(std::ostream &out, tree_node_modified *node);
 
-    tree_node<Key, Data> *getMin();
+    tree_node_modified<Key, Data> *getMin();
 
-    tree_node<Key, Data> *findMin();
+    tree_node_modified<Key, Data> *findMin();
 
-    tree_node<Key, Data> *findMax();
+    tree_node_modified<Key, Data> *findMax();
 
 
 
@@ -73,7 +73,7 @@ public:
 
 
 template<class Key, class Data>
-tree_node<Key, Data>::~tree_node<Key, Data>() {
+tree_node_modified<Key, Data>::~tree_node_modified<Key, Data>() {
     delete key;
     delete data;
     left_son = nullptr;
@@ -82,52 +82,52 @@ tree_node<Key, Data>::~tree_node<Key, Data>() {
 }
 
 template<class Key, class Data>
-void tree_node<Key, Data>::setData(Data *new_data) {
+void tree_node_modified<Key, Data>::setData(Data *new_data) {
     delete data;
     data = new_data;
 }
 
 template<class Key, class Data>
-bool tree_node<Key, Data>::operator==(const tree_node<Key, Data> &node_to_cmp) const {
+bool tree_node_modified<Key, Data>::operator==(const tree_node_modified<Key, Data> &node_to_cmp) const {
     return *this->key == *node_to_cmp.key;
 }
 
 template<class Key, class Data>
-bool tree_node<Key, Data>::operator!=(const tree_node<Key, Data> &node_to_cmp) const {
+bool tree_node_modified<Key, Data>::operator!=(const tree_node_modified<Key, Data> &node_to_cmp) const {
     return *this->key != *node_to_cmp.key;
 }
 
 template<class Key, class Data>
-bool tree_node<Key, Data>::operator>(const tree_node<Key, Data> &node_to_cmp) const {
+bool tree_node_modified<Key, Data>::operator>(const tree_node_modified<Key, Data> &node_to_cmp) const {
     return *this->key > *node_to_cmp.key;
 }
 
 template<class Key, class Data>
-bool tree_node<Key, Data>::operator>=(const tree_node<Key, Data> &node_to_cmp) const {
+bool tree_node_modified<Key, Data>::operator>=(const tree_node_modified<Key, Data> &node_to_cmp) const {
     return *this->key >= *node_to_cmp.key;
 }
 
 template<class Key, class Data>
-bool tree_node<Key, Data>::operator<(const tree_node<Key, Data> &node_to_cmp) const {
+bool tree_node_modified<Key, Data>::operator<(const tree_node_modified<Key, Data> &node_to_cmp) const {
     return *this->key < *node_to_cmp.key;
 }
 
 template<class Key, class Data>
-bool tree_node<Key, Data>::operator<=(const tree_node<Key, Data> &node_to_cmp) const {
+bool tree_node_modified<Key, Data>::operator<=(const tree_node_modified<Key, Data> &node_to_cmp) const {
     return *this->key <= *node_to_cmp.key;
 }
 /*
 template<class Key, class Data>
-tree_node<Key, Data>& tree_node<Key,Data>::operator=(tree_node<Key, Data> *tree_node) {
+tree_node_modified<Key, Data>& tree_node_modified<Key,Data>::operator=(tree_node_modified<Key, Data> *tree_node_modified) {
     if(!this){
         delete this;
     }
-    key = tree_node->key;
-    data = tree_node->data;
+    key = tree_node_modified->key;
+    data = tree_node_modified->data;
 }
 */
 template<class Key, class Data>
-void tree_node<Key, Data>::updateHeight() {
+void tree_node_modified<Key, Data>::updateHeight() {
     if (this->left_son == nullptr && this->right_son == nullptr) {
         this->height = 0;
         return;
@@ -142,7 +142,7 @@ void tree_node<Key, Data>::updateHeight() {
 }
 
 template<class Key, class Data>
-void tree_node<Key, Data>::updateNum() {
+void tree_node_modified<Key, Data>::updateNum() {
     if (this->left_son == nullptr && this->right_son == nullptr) {
         this->sons_num = 1;
         return;
@@ -157,7 +157,7 @@ void tree_node<Key, Data>::updateNum() {
 }
 
 template<class Key, class Data>
-void tree_node<Key, Data>::updateSum() {
+void tree_node_modified<Key, Data>::updateSum() {
     if (this->left_son == nullptr && this->right_son == nullptr) {
         this->sons_sum = sum;
         return;
@@ -173,7 +173,7 @@ void tree_node<Key, Data>::updateSum() {
 
 
 template<class Key, class Data>
-int tree_node<Key, Data>::getBalance() {
+int tree_node_modified<Key, Data>::getBalance() {
     if (this == nullptr) {
         return 0;
     } else if (this->left_son == nullptr) {
@@ -188,7 +188,7 @@ int tree_node<Key, Data>::getBalance() {
 }
 
 template<class Key, class Data>
-void tree_node<Key, Data>::printInorder(std::ostream &out, tree_node<Key, Data> *node) {
+void tree_node_modified<Key, Data>::printInorder(std::ostream &out, tree_node_modified<Key, Data> *node) {
     if(node == NULL){
         return;
     }
@@ -198,8 +198,8 @@ void tree_node<Key, Data>::printInorder(std::ostream &out, tree_node<Key, Data> 
 }
 
 template<class Key, class Data>
-tree_node<Key, Data>* tree_node<Key, Data>::getMin() {
-    tree_node<Key, Data>* tmp = this->right_son;
+tree_node_modified<Key, Data>* tree_node_modified<Key, Data>::getMin() {
+    tree_node_modified<Key, Data>* tmp = this->right_son;
     while (tmp->left_son){
         tmp = tmp->left_son;
     }
@@ -207,8 +207,8 @@ tree_node<Key, Data>* tree_node<Key, Data>::getMin() {
 }
 
 template<class Key, class Data>
-tree_node<Key, Data>* tree_node<Key, Data>::findMin() {
-    tree_node<Key, Data>* tmp = this;
+tree_node_modified<Key, Data>* tree_node_modified<Key, Data>::findMin() {
+    tree_node_modified<Key, Data>* tmp = this;
     if(!tmp){
         return nullptr;
     }
@@ -219,8 +219,8 @@ tree_node<Key, Data>* tree_node<Key, Data>::findMin() {
 }
 
 template<class Key, class Data>
-tree_node<Key, Data>* tree_node<Key, Data>::findMax() {
-    tree_node<Key, Data>* tmp = this;
+tree_node_modified<Key, Data>* tree_node_modified<Key, Data>::findMax() {
+    tree_node_modified<Key, Data>* tmp = this;
     if(!tmp){
         return nullptr;
     }

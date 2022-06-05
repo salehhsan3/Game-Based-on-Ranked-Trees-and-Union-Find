@@ -13,7 +13,7 @@ namespace ULIFB
     class UnionFind {
 public:
     Up_Tree_node<int ,Company*>** elements;
-    Company** elements_array; // saleh
+    // Company** elements_array; // saleh
     int size;
 
     explicit UnionFind(int size) : size(size) {
@@ -37,7 +37,7 @@ public:
         // delete[](elements_array); // saleh
     }
 
-    Up_Tree_node<int, Company*>* UnionGroups(int key1, int key2){
+    Up_Tree_node<int, Company*>* UnionGroups(int key1, int key2, double val_inc){
         if(key1 > size || key2 > size || key1 == key2){
             return nullptr;
         }
@@ -52,13 +52,14 @@ public:
         // merge trees in DS
         if(size1 > size2 || (size1 == size2 && root1->key > root2->key)){
             root2->parent = root1;
-            root2->offset += ( root1->data->getCompanyValue() ); // updating new info - saleh
+            root2->offset += ( val_inc + root1->data->getCompanyValue() - root2->data->getCompanyValue());
             root1->size = size1 + size2;
             return root1;
         }
         // otherwise size1 <= size2
         root1->parent = root2;
-        root1->offset += ( root2->data->getCompanyValue() ); // updating new info - saleh
+        root1->offset += ( root2->data->getCompanyValue() - root1->data->getCompanyValue() ); // + val_inc - val_inc
+        root2->offset += val_inc;
         root2->size = size1 + size2;
         return root2;
     }
@@ -89,7 +90,13 @@ public:
     double findOffSet(int key){
         // this function assumes that the key is legal!
         // passing an illegal key will result in unusual behavior!
+        
         Up_Tree_node<int, Company*>* root = elements[key];
+        // if (root->parent == nullptr)
+        // {
+        //     return root->offset;
+        // }
+        
         double offset = 0; // saleh       
         double sum = 0; // saleh
         while(root->parent != nullptr){

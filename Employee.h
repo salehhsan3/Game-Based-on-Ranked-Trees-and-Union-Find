@@ -40,7 +40,7 @@ namespace ULIFB
                 {
                    return (this->ID < other.ID);
                 }
-                return salary < other.salary;
+                return (salary < other.salary);
             }
             bool operator>(const SalaryID& other) const
             {

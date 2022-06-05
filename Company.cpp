@@ -7,9 +7,9 @@
 namespace ULIFB
 {
 
-    MultiStructures& Company::getEmployeesMultiStructures()
+    MultiStructures* Company::getEmployeesMultiStructures()
     {
-        return(this->employees);
+        return(&(this->employees));
     }
 
     int Company::getCompanyId()
@@ -24,6 +24,7 @@ namespace ULIFB
 
     void Company::IncreaseCompanyValue(double increase)
     {
+        //correct implementation?
         this->value+=increase;
     }
 

@@ -172,10 +172,8 @@ void tree_node<Key, Data>::updateSum() {
 
 
 template<class Key, class Data>
-int tree_node<Key, Data>::getBalance() {
-    if (this == nullptr) {
-        return 0;
-    } else if (this->left_son == nullptr) {
+int tree_node<Key, Data>::getBalance() { 
+    if (this->left_son == nullptr) {
         if (this->right_son == nullptr) {
             return 0;
         }
