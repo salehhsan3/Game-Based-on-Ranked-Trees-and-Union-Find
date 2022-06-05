@@ -77,11 +77,52 @@ public:
         return arr[id%arr_size]->findNode(id);
     }
 
-    ~hash_table(){
+    void DeleteHashTable()
+    {
         for (int i = 0; i < arr_size; ++i) {
             delete(arr[i]);
         }
         delete[](arr);
+    }
+
+    ~hash_table(){
+        DeleteHashTable(); // used to have the lines within DeleteHashTable()
+    }
+
+    // void MergeHashTable(hash_table<Data> *other) // saleh
+    // {
+    //     LList<int,Data>* current_list = other->arr[0];
+    //     for (int i = 0; i < other->arr_size; i++) // maybe arr_size+1
+    //     {
+    //         current_list = other->arr[i];
+    //         Node<int, Data>* current_node = current_list->head->next;
+    //         while (current_node != current_list->tail)
+    //         {
+    //             this->addElement(current_node->key,*current_node->data);
+    //             current_node = current_node->next;
+    //         }
+    //     }
+    // }
+
+    // void MoveHashTableIntoArray(Data* data_array,int index) // saleh
+    // {
+    //     LList<int,Data>* current_list = this->arr[0];
+    //     for (int i = 0; i < this->arr_size; i++) // maybe arr_size+1
+    //     {
+    //         current_list = this->arr[i];
+    //         Node<int, Data>* current_node = current_list->head->next;
+    //         while (current_node != current_list->tail)
+    //         {
+    //             data_array[i] = *(current_node->data);
+    //             index++; // theoritically it should stop at elements_num
+    //             current_node = current_node->next;
+    //         }
+    //     }
+    // }
+
+    int getNumberOfElements()
+    {
+        return(this->elements_num);
     }
 };
 

@@ -116,15 +116,12 @@ void AVL_Tree<Key, Data>::delete_sub_tree(tree_node<Key, Data> *curr_root) {
     }
     delete(curr_root);
     curr_root = nullptr;
+    
 }
 
 
 template<class Key, class Data>
 void AVL_Tree<Key, Data>::treeClear() {
-    if(!this){
-        return;
-    }
-
     if(this->root){
         delete_sub_tree(this->root);
     }
@@ -283,7 +280,7 @@ tree_node<Key, Data>* AVL_Tree<Key, Data>::findNodeAux(tree_node<Key, Data> *cur
 
 template<class Key, class Data>
 void AVL_Tree<Key, Data>::removeNode(Key key) {
-    if (!this || !findNode(key)){
+    if (!findNode(key)){
         return;
     }
     root = removeNodeAux(root, key);
@@ -377,6 +374,10 @@ tree_node<Key, Data>* AVL_Tree<Key, Data>::copyTreeNode(tree_node<Key, Data> roo
 
 template<class Key, class Data>
 tree_node<Key, Data> *AVL_Tree<Key, Data>::Select(tree_node<Key, Data> *root, int rank) {
+    if (root == nullptr)
+    {
+        return nullptr; // empty tree case!
+    }
     if (root->left_son) {
         if (rank - root->left_son->sons_num - 1 == 0) {
             return root;

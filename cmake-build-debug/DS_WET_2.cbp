@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="DS_WET_2"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DS_WET_2">
+				<Option output="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/DS_WET_2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/."/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 DS_WET_2"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="DS_WET_2/fast">
+				<Option output="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/DS_WET_2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/."/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 DS_WET_2/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/AO_AVL_Tree.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/AO_Tree_node.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Company.cpp">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Company.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Employee.cpp">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Employee.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/HashTable.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Industry.cpp">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Industry.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/MultiStructures.cpp">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/MultiStructures.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Union-Find.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/UpTreeNode.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/library2.cpp">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/library2.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/list.h">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/main2.cpp">
+			<Option target="DS_WET_2"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

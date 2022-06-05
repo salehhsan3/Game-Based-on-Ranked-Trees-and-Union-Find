@@ -1,0 +1,5 @@
+Init done.
+SumOfBumpGradeBetweenTopWorkersByGroup: INVALID_INPUT
+SumOfBumpGradeBetweenTopWorkersByGroup: FAILURE
+CompanyValue: INVALID_INPUT
+SumOfBumpGradeBetweenTopWorkersByGroup failed.

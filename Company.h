@@ -24,7 +24,7 @@ namespace ULIFB
         ~Company() = default;
         Company(const Company& comp) = default;
         Company& operator=(const Company& comp) = default;
-        MultiStructures& getEmployeesMultiStructures();
+        MultiStructures* getEmployeesMultiStructures();
         int getCompanyId();
         double getCompanyValue();
         void IncreaseCompanyValue(double increase);

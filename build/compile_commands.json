@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/DS_WET_2.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\DS_WET_2.dir\\Employee.cpp.obj -c C:\\Users\\Saleh\\Desktop\\Data-Structures\\spring\\DS-WET_2\\Employee.cpp",
+  "file": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Employee.cpp"
+},
+{
+  "directory": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/DS_WET_2.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\DS_WET_2.dir\\MultiStructures.cpp.obj -c C:\\Users\\Saleh\\Desktop\\Data-Structures\\spring\\DS-WET_2\\MultiStructures.cpp",
+  "file": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/MultiStructures.cpp"
+},
+{
+  "directory": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/DS_WET_2.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\DS_WET_2.dir\\Company.cpp.obj -c C:\\Users\\Saleh\\Desktop\\Data-Structures\\spring\\DS-WET_2\\Company.cpp",
+  "file": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Company.cpp"
+},
+{
+  "directory": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/DS_WET_2.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\DS_WET_2.dir\\Industry.cpp.obj -c C:\\Users\\Saleh\\Desktop\\Data-Structures\\spring\\DS-WET_2\\Industry.cpp",
+  "file": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Industry.cpp"
+},
+{
+  "directory": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/DS_WET_2.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\DS_WET_2.dir\\library2.cpp.obj -c C:\\Users\\Saleh\\Desktop\\Data-Structures\\spring\\DS-WET_2\\library2.cpp",
+  "file": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/library2.cpp"
+},
+{
+  "directory": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe  @CMakeFiles/DS_WET_2.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\DS_WET_2.dir\\main2.cpp.obj -c C:\\Users\\Saleh\\Desktop\\Data-Structures\\spring\\DS-WET_2\\main2.cpp",
+  "file": "C:/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/main2.cpp"
+}
+]

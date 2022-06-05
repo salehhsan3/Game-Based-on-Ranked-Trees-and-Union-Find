@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(DS_WET_2)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
 
 include_directories(.)
 
@@ -10,8 +10,6 @@ add_executable(DS_WET_2
         Employee.h
         AO_Tree_node.h
         AO_AVL_Tree.h
-        AO_Tree_node_Modified.h
-        AO_AVL_Tree_Modified.h
         HashTable.h
         list.h
         Union-Find.h

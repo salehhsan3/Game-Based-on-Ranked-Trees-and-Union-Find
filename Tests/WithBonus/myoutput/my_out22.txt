@@ -1,0 +1,7 @@
+Init done.
+CompanyValue: 30
+SumOfBumpGradeBetweenTopWorkersByGroup: FAILURE
+RemoveEmployee: FAILURE
+RemoveEmployee: FAILURE
+PromoteEmployee: FAILURE
+AverageBumpGradeBetweenSalaryByGroup failed.

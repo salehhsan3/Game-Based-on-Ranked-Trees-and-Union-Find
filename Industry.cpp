@@ -12,17 +12,28 @@ namespace ULIFB
         (this->number_of_companies);
     }
 
-    MultiStructures& Industry::getEmployeesMultiStructures()
+    MultiStructures* Industry::getEmployeesMultiStructures()
     {
-        return(this->employees);
+        return(&(this->employees));
     }
 
     StatusType Industry::AddEmployee(int employeeID, int companyID, int grade)
     {
-        if (employeeID <= 0 || companyID <= 0 |( companyID > this->getNumberOfCompanies()) || grade < 0)
+        // saleh's implementation - to remove later!
+        if ( (employeeID <= 0) || (companyID <= 0) |( companyID > this->getNumberOfCompanies()) || (grade < 0) )
         {
             return INVALID_INPUT;
         }
+        shared_ptr<Employee> emp_to_find =  this->getEmployeesMultiStructures()->findEmployee(employeeID);
+        if (emp_to_find != nullptr)
+        {
+            return FAILURE;
+        }
+
+        shared_ptr<Employee> emp_to_add = make_shared<Employee>(employeeID,companyID,grade);
+        this->getEmployeesMultiStructures()->addEmployee(SalaryID(0,employeeID),emp_to_add);
+        // employee's company has to exist!
+        this->companies_union.find(companyID)->data->getEmployeesMultiStructures()->addEmployee(SalaryID(0,employeeID),emp_to_add);
         
         return SUCCESS;
     }
@@ -34,26 +45,49 @@ namespace ULIFB
         {
             return INVALID_INPUT;
         }
-        shared_ptr<Employee> emp_to_find =  this->getEmployeesMultiStructures().findEmployee(employeeID);
+        shared_ptr<Employee> emp_to_find =  this->getEmployeesMultiStructures()->findEmployee(employeeID);
         if (emp_to_find == nullptr)
         {
             return FAILURE;
         }
+        
         int company_id = emp_to_find->getEmployersid();
-        this->companies_hash.Find(company_id)->data->get()->getEmployeesMultiStructures().removeEmployee(employeeID); // remove from company
-        this->getEmployeesMultiStructures().removeEmployee(employeeID); // remove from Industry
+        this->companies_union.find(company_id)->data->getEmployeesMultiStructures()->removeEmployee(employeeID); // remove from company
+        this->getEmployeesMultiStructures()->removeEmployee(employeeID); // remove from Industry
         return SUCCESS;
     }
 
     StatusType Industry::AcquireCompany(int companyID1, int companyID2, double factor)
     {
+        // saleh's implementation - remove later!
         if (companyID1 <= 0 || (companyID1 > this->getNumberOfCompanies()) 
                 || companyID2 <=0 || (companyID2 > this->getNumberOfCompanies())
                 || factor <= 0)
         {
             return INVALID_INPUT;
         }
+
+        Company* acquirer = this->companies_union.find(companyID1)->data;
+        Company* target = this->companies_union.find(companyID2)->data;
+        if (acquirer == target)
+        {
+            return INVALID_INPUT;
+        }
+
+        double value_increase = (target->getCompanyValue() * factor);
+        this->companies_union.UnionGroups(companyID1,companyID2,value_increase);
+        Company* new_owner = this->companies_union.find(companyID1)->data; // this is the root of the group!
+        new_owner->IncreaseCompanyValue(value_increase);
+        if (new_owner->getCompanyId() == companyID1)
+        {
+            new_owner->getEmployeesMultiStructures()->MergeStructures(target->getEmployeesMultiStructures(),new_owner->getCompanyId());
+        }
+        else
+        {
+            new_owner->getEmployeesMultiStructures()->MergeStructures(acquirer->getEmployeesMultiStructures(),new_owner->getCompanyId());
+        }
         
+
         return SUCCESS;
     }
 
@@ -64,14 +98,15 @@ namespace ULIFB
         {
             return INVALID_INPUT;
         }
-        shared_ptr<Employee> emp_to_find =  this->getEmployeesMultiStructures().findEmployee(employeeID);
+        // MultiStructures multi = this->getEmployeesMultiStructures();
+        shared_ptr<Employee> emp_to_find =  this->getEmployeesMultiStructures()->findEmployee(employeeID);
         if (emp_to_find == nullptr)
         {
             return FAILURE;
         }
         int company_id = emp_to_find->getEmployersid();
-        this->companies_hash.Find(company_id)->data->get()->getEmployeesMultiStructures().IncreaseEmployeeSalary(employeeID,salaryIncrease); // increasesalary in company
-        this->getEmployeesMultiStructures().IncreaseEmployeeSalary(employeeID,salaryIncrease); // increasesalary in Industry
+        this->companies_union.find(company_id)->data->getEmployeesMultiStructures()->IncreaseEmployeeSalary(employeeID,salaryIncrease); // increasesalary in company
+        this->getEmployeesMultiStructures()->IncreaseEmployeeSalary(employeeID,salaryIncrease); // increasesalary in Industry
         return SUCCESS;
     }
 
@@ -81,6 +116,15 @@ namespace ULIFB
         {
             return INVALID_INPUT;
         }
+
+        shared_ptr<Employee> emp_to_find =  this->getEmployeesMultiStructures()->findEmployee(employeeID);
+        if (emp_to_find == nullptr)
+        {
+            return FAILURE;
+        }
+        int company_id = emp_to_find->getEmployersid();
+        this->companies_union.find(company_id)->data->getEmployeesMultiStructures()->promoteEmployee(employeeID,bumpGrade); // increasesalary in company
+        this->getEmployeesMultiStructures()->promoteEmployee(employeeID,bumpGrade); // increasesalary in Industry
 
         return SUCCESS;
     }
@@ -92,9 +136,10 @@ namespace ULIFB
         {
             return INVALID_INPUT;
         }
-        MultiStructures multi =  companyID == 0 ? this->employees : companies_union.find(companyID)->data->getEmployeesMultiStructures(); // get the correct multistructure to work with!
+        // company exists for sure!
+        MultiStructures *multi =  companyID == 0 ? this->getEmployeesMultiStructures() : companies_union.find(companyID)->data->getEmployeesMultiStructures(); // get the correct multistructure to work with!
         // now we need to find the employee whose rank is m!
-        int sum = multi.SumOfBumpGradeBetweenTopWorkersByGroup(m);
+        int sum = multi->SumOfBumpGradeBetweenTopWorkersByGroup(m);
         if (sum == -1)
         {
             return FAILURE;
@@ -111,6 +156,7 @@ namespace ULIFB
             return INVALID_INPUT;
         }
 
+        return FAILURE; // just for basic test's sake
         
         return SUCCESS;
         

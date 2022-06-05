@@ -16,21 +16,22 @@ namespace ULIFB
     private:
         int number_of_companies;
         UnionFind companies_union; // for the companies
-        hash_table<shared_ptr<Company>> companies_hash; // for the companies only includes the "owners"
+        // hash_table<shared_ptr<Company>> companies_hash; // for the companies only includes the "owners"
+        // instead of using a hashtable we'll just save the root of the group in the union find as the company_id of employee
         MultiStructures employees;
     public:
         Industry(int number_of_companies):
             number_of_companies(number_of_companies),
             companies_union(UnionFind(number_of_companies)),
-            companies_hash(),
+            // companies_hash(),
             employees()
         {
-            for (int i = 1; i <= number_of_companies; i++)
-            {
-                companies_hash.addElement(i,shared_ptr<Company>(companies_union.elements[i]->data)); // gets companies from the elements array and makes them shared_ptr! - correct implementation?
-                // maybe consider inserting Company* into the hashtable instead of shared_ptr
-                // we just initialized the UnionFind above therefore we can use elements as if it hasn't been altered yet!
-            }
+            // for (int i = 1; i <= number_of_companies; i++)
+            // {
+            //     companies_hash.addElement(i,shared_ptr<Company>(companies_union.elements[i]->data)); // gets companies from the elements array and makes them shared_ptr! - correct implementation?
+            //     // maybe consider inserting Company* into the hashtable instead of shared_ptr
+            //     // we just initialized the UnionFind above therefore we can use elements as if it hasn't been altered yet!
+            // }
         }
 
         ~Industry() = default;
@@ -39,7 +40,7 @@ namespace ULIFB
 
         Industry& operator=(const Industry& ind) = default;
 
-        MultiStructures& getEmployeesMultiStructures();
+        MultiStructures* getEmployeesMultiStructures();
 
         StatusType AddEmployee(int employeeID, int companyID, int grade);
 

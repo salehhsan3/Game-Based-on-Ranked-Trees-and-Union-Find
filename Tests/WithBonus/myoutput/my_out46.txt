@@ -1,0 +1,13 @@
+Init done.
+AverageBumpGradeBetweenSalaryByGroup: INVALID_INPUT
+AverageBumpGradeBetweenSalaryByGroup: INVALID_INPUT
+AcquireCompany: INVALID_INPUT
+RemoveEmployee: FAILURE
+EmployeeSalaryIncrease: FAILURE
+RemoveEmployee: FAILURE
+AddEmployee: INVALID_INPUT
+CompanyValue: INVALID_INPUT
+CompanyValue: INVALID_INPUT
+CompanyValue: INVALID_INPUT
+AddEmployee: INVALID_INPUT
+AverageBumpGradeBetweenSalaryByGroup failed.
