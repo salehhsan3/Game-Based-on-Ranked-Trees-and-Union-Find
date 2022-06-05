@@ -26,6 +26,10 @@ namespace ULIFB
     {
         this->value+=increase;
     }
+
+    void Company::setCompanyValue(double value) {
+        value = value;
+    }
     
     
     // void Company::addEmployee(SalaryID sal_id, shared_ptr<Employee>& emp_to_add)

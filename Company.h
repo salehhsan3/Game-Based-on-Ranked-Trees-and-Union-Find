@@ -27,6 +27,7 @@ namespace ULIFB
         MultiStructures& getEmployeesMultiStructures();
         int getCompanyId();
         double getCompanyValue();
+        void setCompanyValue( double value);
         void IncreaseCompanyValue(double increase);
                                 // the following fuctions are potentially not needed! //
         // shared_ptr<Employee>& findEmployee(SalaryID sal_id); 

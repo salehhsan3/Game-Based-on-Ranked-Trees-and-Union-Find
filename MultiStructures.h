@@ -20,7 +20,8 @@ namespace ULIFB
         AVL_Tree<SalaryID,shared_ptr<Employee>> employees_with_salary; //ranktree for employees with salary>0
         int number_of_employees_with_no_salary;
         int sum_of_grades_for_emp_with_no_salary;
-        int grade_bump_for_zero_salary;
+        int total_num_of_employees;
+        //int grade_bump_for_zero_salary;//omima ****no need for this
     public:
         MultiStructures() = default; // is default the correct implementation?
         ~MultiStructures() = default;
@@ -30,12 +31,17 @@ namespace ULIFB
                                         // non bonus functions //
         void addEmployee(SalaryID sal_id ,shared_ptr<Employee>& emp_to_add);
         void removeEmployee(int emp_id);
-        void MergeStructures(MultiStructures& other);
+        void MergeStructures(MultiStructures& other, int root_id);
         void IncreaseEmployeeSalary(int emp_id, int increase);
         void promoteEmployee(int emp_id, int bump);
         int SumOfBumpGradeBetweenTopWorkersByGroup(int number_of_top_workers);
+        void bumpGradeForSumOfGradesForEmpWhithNoSalary(int bumpGrade);
+        AVL_Tree<SalaryID,shared_ptr<Employee>>* getEmployeesWithSalaryTree();
+        int getNumOfEmployeesWithNoSalary();
+        int getSumOfGradesForEmployeesWithNoSalary();
         double AverageBumpGradeBetweenSalaryByGroup(int lowerSalary, int higherSalary);
                                        // bonus functions // may not be needed!
+
     };
     
     
