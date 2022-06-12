@@ -24,6 +24,10 @@ Company.h
 MultiStructures.h
 /mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/MultiStructures.h
 
+/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Employee.cpp
+Employee.h
+/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Employee.h
+
 /mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/Employee.h
 iostream
 -
@@ -83,4 +87,18 @@ Industry.h
 /mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/library2.h
 
 /mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/list.h
+
+/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/main2.cpp
+assert.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+library2.h
+/mnt/c/Users/Saleh/Desktop/Data-Structures/spring/DS-WET_2/library2.h
+iostream
+-
 
