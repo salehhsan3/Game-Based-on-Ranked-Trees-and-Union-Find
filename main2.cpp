@@ -50,8 +50,8 @@ static const char *commandStr[] = {
         "AcquireCompany",
         "EmployeeSalaryIncrease",
         "PromoteEmployee",
-        "SumOfBumpGradeBetweenTopWorkersByGroup ",
-        "AverageBumpGradeBetweenSalaryByGroup ",
+        "SumOfBumpGradeBetweenTopWorkersByGroup ", // removed space readded
+        "AverageBumpGradeBetweenSalaryByGroup ", // removed space readded
         "CompanyValue",
         "BumpGradeToEmployees",
         "Quit" };
@@ -342,6 +342,7 @@ static errorType OnSumOfBumpGradeBetweenTopWorkersByGroup (void* DS, const char*
     {
         void **sum_ptr = &sumBumpGrade;
         int to_print = (*(int *)sum_ptr);//somehow works!
+        // printf("SumOfBumpGradeBetweenTopWorkersByGroup: %s\n", ReturnValToStr(res));
         printf("SumOfBumpGradeBetweenTopWorkersByGroup: %d\n", to_print);
     
     }
@@ -372,8 +373,9 @@ static errorType OnAverageBumpGradeBetweenSalaryByGroup (void* DS, const char* c
     if (res == SUCCESS)
     {
         void **average_ptr = &averageBumpGrade;
-        int to_print = (*(int *)average_ptr);//somehow works!
-        printf("AverageBumpGradeBetweenSalaryByGroup: %d\n", to_print);
+        double to_print = (*(double *)average_ptr);//somehow works!
+        // printf("AverageBumpGradeBetweenSalaryByGroup: %s\n", ReturnValToStr(res));
+        printf("AverageBumpGradeBetweenSalaryByGroup: %.1f\n", to_print);
     }
     return error_free;
 }
@@ -401,13 +403,15 @@ static errorType OnCompanyValue(void* DS, const char* const command) {
     {
         void **standing_ptr = &standing;
         double to_print = (*(double *)standing_ptr);//somehow works!
-        if (to_print == (int)to_print)
-        {
-            printf("CompanyValue: %d\n", (int)to_print);
-            return error_free;
-        }
-        
-        printf("CompanyValue: %lf\n", to_print);
+        // printf("CompanyValue: %s\n", ReturnValToStr(res));
+        // if (to_print == (int)to_print)
+        // {
+        //     printf("CompanyValue: %d\n", (int)to_print);
+        // }
+        // else
+        // {
+            printf("CompanyValue: %.1f\n", to_print);
+        // }
     }
     return error_free;
 }

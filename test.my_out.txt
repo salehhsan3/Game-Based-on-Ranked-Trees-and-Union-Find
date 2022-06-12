@@ -22,7 +22,7 @@ PromoteEmployee: SUCCESS
 CompanyValue: 36.0
 CompanyValue: 7.0
 PromoteEmployee: SUCCESS
-AverageBumpGradeBetweenSalaryByGroup: FAILURE
+AverageBumpGradeBetweenSalaryByGroup: 0.0
 SumOfBumpGradeBetweenTopWorkersByGroup: FAILURE
 CompanyValue: 62.0
 Quit done.

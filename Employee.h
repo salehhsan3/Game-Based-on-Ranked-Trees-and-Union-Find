@@ -28,9 +28,9 @@ namespace ULIFB
             SalaryID(const SalaryID& other) = default;
             bool operator==(const SalaryID& other)const
             {
-                return ID == other.ID && salary == other.salary;
+                return ( (this->ID == other.ID) && (this->salary == other.salary) );
             }
-            bool operator!=(const SalaryID& other)const
+            bool operator!=(const SalaryID& other) const
             {
                 return ID != other.ID;
             }
@@ -45,6 +45,14 @@ namespace ULIFB
             bool operator>(const SalaryID& other) const
             {
                 return( (! ( (*this) < other) ) && (! ( (*this) == other) ) );
+            }
+            bool operator<=(const SalaryID& other) const
+            {
+                return(! ( (*this) > other) );
+            }
+            bool operator>=(const SalaryID& other) const
+            {
+                return(! ( (*this) < other) );
             }
             int getSalary()
             {

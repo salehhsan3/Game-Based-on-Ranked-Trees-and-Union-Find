@@ -81,8 +81,12 @@ public:
     {
         for (int i = 0; i < arr_size; ++i) {
             delete(arr[i]);
+            arr[i] = nullptr; // saleh
         }
         delete[](arr);
+        arr = nullptr; // saleh
+        arr_size = 0; // saleh
+        elements_num = 0; // saleh
     }
 
     ~hash_table(){
