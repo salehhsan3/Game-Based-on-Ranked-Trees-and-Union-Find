@@ -45,6 +45,7 @@ namespace ULIFB
                                                                     int end, tree_node<SalaryID, shared_ptr<Employee>> *parent);
         void merge_func(shared_ptr<Employee> arr1[], shared_ptr<Employee> arr2[] ,int n1, int n2,shared_ptr<Employee>  arr3[]);
         int countNodes(tree_node<SalaryID, shared_ptr<Employee>>* node);
+        int getNodeSumInSubTree(tree_node<SalaryID,shared_ptr<Employee>> * node);
         // void UpdataRank(tree_node<SalaryID, shared_ptr<Employee>>* root);
         // void UpdataSum(tree_node<SalaryID, shared_ptr<Employee>>* root);
         // void UpdataSumForAverage(tree_node<SalaryID, shared_ptr<Employee>>* root);

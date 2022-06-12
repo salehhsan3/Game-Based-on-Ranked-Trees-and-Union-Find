@@ -406,28 +406,38 @@ namespace ULIFB
     //     return getSumOfGradesAux(node->right_son,sum,num);
     // }
 
+    int MultiStructures::getNodeSumInSubTree(tree_node<SalaryID,shared_ptr<Employee>> * node)
+    {
+        if (node == nullptr)
+        {
+            return 0;
+        }
+        return node->sons_sum;
+    }
+
     void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,int *sum, int *num)
     {
         if (node == nullptr || (*num) == 0)
         {
             return;
         }
-        if ( (*num) < 0 )
+        if ( (*num) < 0 ) // counted too many nodes
         {
             (*num) += node->sons_num;
             (*sum) -= node->sons_sum;
-            node = node->right_son;
-            return getSumOfGradesAux(node,sum,num);
+            return getSumOfGradesAux(node->right_son,sum,num);
         }
 
-        if ( (*num) > 0 )
+        if ( (*num) > 0 ) // need to count more nodes
         {
             (*num) -= node->sons_num;
             (*sum) += node->sons_sum;
-            node = node->left_son;
-            return getSumOfGradesAux(node,sum,num);
+            return getSumOfGradesAux(node->left_son,sum,num);
         }
         
+        node = node->parent;
+
+        getSumOfGradesAux(node->left_son,sum,num);
         
     }
 

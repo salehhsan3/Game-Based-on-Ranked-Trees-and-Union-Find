@@ -77,7 +77,8 @@ public:
         int size1 = root1->size;
         int size2 = root2->size;
         // merge trees in DS
-        if(size1 > size2 || (size1 == size2 && root1->key > root2->key)){
+        // if(size1 > size2 || (size1 == size2 && root1->key > root2->key)){
+        if(size1 >= size2 ){
             root2->parent = root1;
             root2->offset += ( val_inc + root1->data->getCompanyValue() - root2->data->getCompanyValue());
             root1->size = size1 + size2;
@@ -85,8 +86,10 @@ public:
         }
         // otherwise size1 <= size2
         root1->parent = root2;
-        root1->offset += ( root2->data->getCompanyValue() - root1->data->getCompanyValue() ); // + val_inc - val_inc
-        root2->offset += val_inc;
+        // root1->offset += ( root2->data->getCompanyValue() - root1->data->getCompanyValue() ); // + val_inc - val_inc
+        // root2->offset += val_inc;
+        root1->offset += ( root2->data->getCompanyValue() - val_inc - root1->data->getCompanyValue() );
+        // root1->offset +=
         root2->size = size1 + size2;
         return root2;
     }

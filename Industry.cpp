@@ -85,19 +85,23 @@ namespace ULIFB
         }
 
         int x = 0;
-        // if (companyID1 == 7  || companyID1 == 15 || companyID2 == 7 || companyID2 == 15)
-        // {
-        //     x++;
-        // }
-        if (companyID1 == 5 || companyID2 == 5)
+        if (companyID1 == 19  || companyID1 == 18 || companyID2 == 19 || companyID2 == 18)
         {
             x++;
         }
+        // if (companyID1 == 5 || companyID2 == 5)
+        // {
+        //     x++;
+        // }
         // double value_increase = ((target->getCompanyValue() - target_node->offset) * factor); // po ssible wroooooooong UF - saleh
         double value_increase = ( target->getCompanyValue() * factor); 
-        this->companies_union.UnionGroups(companyID1,companyID2,value_increase);
+        Up_Tree_node<int,Company*> *new_root = this->companies_union.UnionGroups(companyID1,companyID2,value_increase);    
         Company* new_owner = this->companies_union.find(companyID1)->data; // this is the root of the group!
-        new_owner->IncreaseCompanyValue(value_increase);
+        if (new_root != target_node)
+        {
+            new_owner->IncreaseCompanyValue(value_increase);
+        }
+        // new_owner->IncreaseCompanyValue(value_increase);
         if (new_owner->getCompanyId() == acquirer->getCompanyId() )
         {
             new_owner->getEmployeesMultiStructures()->MergeStructures(target->getEmployeesMultiStructures(),new_owner->getCompanyId());
@@ -206,93 +210,173 @@ namespace ULIFB
         return SUCCESS;
     }
 
+    // StatusType Industry::AverageBumpGradeBetweenSalaryByGroup(int companyID, int lowerSalary, int higherSalary, void * averageBumpGrade)
+    // {
+    //     if (higherSalary < 0 || lowerSalary < 0 || (lowerSalary > higherSalary) || companyID < 0 || (companyID > this->getNumberOfCompanies()) || averageBumpGrade == nullptr)
+    //     {
+    //         return INVALID_INPUT;
+    //     }
+
+    //     MultiStructures *multi =  (companyID == 0) ? this->getEmployeesMultiStructures() : companies_union.find(companyID)->data->getEmployeesMultiStructures(); // get the correct multistructure to work with!
+
+    //     double average = multi->AverageBumpGradeBetweenSalaryByGroup(lowerSalary,higherSalary);
+    //     if (average < 0 )
+    //     {
+    //         return FAILURE;
+    //     }
+    //     (*(double *)averageBumpGrade) = average;
+    //     return SUCCESS;
+
+    //     // if (companyID == 0){
+    //     //     shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
+    //     //     SalaryID max_sal_id = SalaryID(0, max_id+1);
+    //     //     shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
+    //     //     SalaryID min_sal_id = SalaryID(0, 0);
+
+    //     //     //add fakes to tree
+    //     //     AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = employees.getEmployeesWithSalaryTree();
+    //     //     tree->addNode(max_sal_id, fake_max, 0);
+    //     //     tree->addNode(min_sal_id, fake_min, 0);
+
+    //     //     int num_of_employees_in_bounds = 0;
+    //     //     int sum_of_grades = 0;
+
+    //     //     int rank1 = tree->findRank(max_sal_id);
+    //     //     int rank2 = tree->findRank(min_sal_id);
+
+    //     //     int sum1 = tree->findSumSmaller(max_sal_id);
+    //     //     int sum2 = tree->findSumSmaller(min_sal_id);
+
+    //     //     num_of_employees_in_bounds = rank1 - rank2 -1;
+    //     //     sum_of_grades = sum1 - sum2;
+
+    //     //     if (lowerSalary == 0){
+    //     //         num_of_employees_in_bounds += employees.getNumOfEmployeesWithNoSalary();
+    //     //         sum_of_grades += employees.getSumOfGradesForEmployeesWithNoSalary();
+    //     //     }
+    //     //     tree->removeNode(max_sal_id);
+    //     //     tree->removeNode(min_sal_id);
+    //     //     if (num_of_employees_in_bounds == 0){
+    //     //         return FAILURE;
+    //     //     }
+    //     //     *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);
+    //     //     return SUCCESS;
+    //     // }
+
+    //     // Company* company = companies_union.find(companyID)->data;
+    //     // shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
+    //     // SalaryID max_sal_id = SalaryID(0, max_id+1);
+    //     // shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
+    //     // SalaryID min_sal_id = SalaryID(0, 0);
+
+    //     // //add fakes to tree
+    //     // AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = company->getEmployeesMultiStructures()->getEmployeesWithSalaryTree();
+    //     // tree->addNode(max_sal_id, fake_max, 0);
+    //     // tree->addNode(min_sal_id, fake_min, 0);
+
+    //     // int num_of_employees_in_bounds = 0;
+    //     // int sum_of_grades = 0;
+
+    //     // int rank1 = tree->findRank(max_sal_id);
+    //     // int rank2 = tree->findRank(min_sal_id);
+
+    //     // int sum1 = tree->findSumSmaller(max_sal_id);
+    //     // int sum2 = tree->findSumSmaller(min_sal_id);
+
+    //     // num_of_employees_in_bounds = rank1 - rank2 -1;
+    //     // sum_of_grades = sum1 - sum2;
+
+    //     // if (lowerSalary == 0){
+    //     //     num_of_employees_in_bounds += company->getEmployeesMultiStructures()->getNumOfEmployeesWithNoSalary();
+    //     //     sum_of_grades += company->getEmployeesMultiStructures()->getSumOfGradesForEmployeesWithNoSalary();
+    //     // }
+    //     // tree->removeNode(max_sal_id);
+    //     // tree->removeNode(min_sal_id);
+    //     // if (num_of_employees_in_bounds == 0){
+    //     //     return FAILURE;
+    //     // }
+    //     // *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);/////////////check
+    //     // return SUCCESS;
+    // }
+
     StatusType Industry::AverageBumpGradeBetweenSalaryByGroup(int companyID, int lowerSalary, int higherSalary, void * averageBumpGrade)
     {
         if (higherSalary < 0 || lowerSalary < 0 || (lowerSalary > higherSalary) || companyID < 0 || (companyID > this->getNumberOfCompanies()) || averageBumpGrade == nullptr)
         {
             return INVALID_INPUT;
         }
+        if (companyID == 0){
+            shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
+            SalaryID max_sal_id = SalaryID(higherSalary, max_id+1);
+            shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
+            SalaryID min_sal_id = SalaryID(lowerSalary, 0);
 
-        MultiStructures *multi =  (companyID == 0) ? this->getEmployeesMultiStructures() : companies_union.find(companyID)->data->getEmployeesMultiStructures(); // get the correct multistructure to work with!
+            //add fakes to tree
+            AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = employees.getEmployeesWithSalaryTree();
+            tree->addNode(max_sal_id, fake_max, 0);
+            tree->addNode(min_sal_id, fake_min, 0);
 
-        double average = multi->AverageBumpGradeBetweenSalaryByGroup(lowerSalary,higherSalary);
-        if (average < 0 )
-        {
+            int num_of_employees_in_bounds = 0;
+            double sum_of_grades = 0;
+
+            int rank1 = tree->findRank(max_sal_id);
+            int rank2 = tree->findRank(min_sal_id);
+
+            int sum1 = tree->findSumSmaller(max_sal_id);
+            int sum2 = tree->findSumSmaller(min_sal_id);
+
+            num_of_employees_in_bounds = rank1 - rank2 -1;
+            sum_of_grades = sum1 - sum2;
+
+            if (lowerSalary == 0){
+                num_of_employees_in_bounds += employees.getNumOfEmployeesWithNoSalary();
+                sum_of_grades += employees.getSumOfGradesForEmployeesWithNoSalary();
+            }
+            tree->removeNode(max_sal_id);
+            tree->removeNode(min_sal_id);
+            if (num_of_employees_in_bounds == 0){
+                return FAILURE;
+            }
+            *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);
+            return SUCCESS;
+        }
+
+        Company* company = companies_union.find(companyID)->data;
+        shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
+        SalaryID max_sal_id = SalaryID(higherSalary, max_id+1);
+        shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
+        SalaryID min_sal_id = SalaryID(lowerSalary, 0);
+
+        //add fakes to tree
+        AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = company->getEmployeesMultiStructures()->getEmployeesWithSalaryTree();
+        tree->addNode(max_sal_id, fake_max, 0);
+        tree->addNode(min_sal_id, fake_min, 0);
+
+        int num_of_employees_in_bounds = 0;
+        double sum_of_grades = 0;
+
+        int rank1 = tree->findRank(max_sal_id);
+        int rank2 = tree->findRank(min_sal_id);
+
+        int sum1 = tree->findSumSmaller(max_sal_id);
+        int sum2 = tree->findSumSmaller(min_sal_id);
+
+        num_of_employees_in_bounds = rank1 - rank2 - 1 ;
+        sum_of_grades = sum1 - sum2;
+
+        if (lowerSalary == 0){
+            num_of_employees_in_bounds += company->getEmployeesMultiStructures()->getNumOfEmployeesWithNoSalary();
+            sum_of_grades += company->getEmployeesMultiStructures()->getSumOfGradesForEmployeesWithNoSalary();
+        }
+//        tree->removeNode(max_sal_id);
+//        tree->removeNode(min_sal_id);
+        if (num_of_employees_in_bounds == 0){
             return FAILURE;
         }
-        (*(double *)averageBumpGrade) = average;
+        tree->removeNode(max_sal_id);
+        tree->removeNode(min_sal_id);
+        *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);/////////////check
         return SUCCESS;
-
-        // if (companyID == 0){
-        //     shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
-        //     SalaryID max_sal_id = SalaryID(0, max_id+1);
-        //     shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
-        //     SalaryID min_sal_id = SalaryID(0, 0);
-
-        //     //add fakes to tree
-        //     AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = employees.getEmployeesWithSalaryTree();
-        //     tree->addNode(max_sal_id, fake_max, 0);
-        //     tree->addNode(min_sal_id, fake_min, 0);
-
-        //     int num_of_employees_in_bounds = 0;
-        //     int sum_of_grades = 0;
-
-        //     int rank1 = tree->findRank(max_sal_id);
-        //     int rank2 = tree->findRank(min_sal_id);
-
-        //     int sum1 = tree->findSumSmaller(max_sal_id);
-        //     int sum2 = tree->findSumSmaller(min_sal_id);
-
-        //     num_of_employees_in_bounds = rank1 - rank2 -1;
-        //     sum_of_grades = sum1 - sum2;
-
-        //     if (lowerSalary == 0){
-        //         num_of_employees_in_bounds += employees.getNumOfEmployeesWithNoSalary();
-        //         sum_of_grades += employees.getSumOfGradesForEmployeesWithNoSalary();
-        //     }
-        //     tree->removeNode(max_sal_id);
-        //     tree->removeNode(min_sal_id);
-        //     if (num_of_employees_in_bounds == 0){
-        //         return FAILURE;
-        //     }
-        //     *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);
-        //     return SUCCESS;
-        // }
-
-        // Company* company = companies_union.find(companyID)->data;
-        // shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
-        // SalaryID max_sal_id = SalaryID(0, max_id+1);
-        // shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
-        // SalaryID min_sal_id = SalaryID(0, 0);
-
-        // //add fakes to tree
-        // AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = company->getEmployeesMultiStructures()->getEmployeesWithSalaryTree();
-        // tree->addNode(max_sal_id, fake_max, 0);
-        // tree->addNode(min_sal_id, fake_min, 0);
-
-        // int num_of_employees_in_bounds = 0;
-        // int sum_of_grades = 0;
-
-        // int rank1 = tree->findRank(max_sal_id);
-        // int rank2 = tree->findRank(min_sal_id);
-
-        // int sum1 = tree->findSumSmaller(max_sal_id);
-        // int sum2 = tree->findSumSmaller(min_sal_id);
-
-        // num_of_employees_in_bounds = rank1 - rank2 -1;
-        // sum_of_grades = sum1 - sum2;
-
-        // if (lowerSalary == 0){
-        //     num_of_employees_in_bounds += company->getEmployeesMultiStructures()->getNumOfEmployeesWithNoSalary();
-        //     sum_of_grades += company->getEmployeesMultiStructures()->getSumOfGradesForEmployeesWithNoSalary();
-        // }
-        // tree->removeNode(max_sal_id);
-        // tree->removeNode(min_sal_id);
-        // if (num_of_employees_in_bounds == 0){
-        //     return FAILURE;
-        // }
-        // *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);/////////////check
-        // return SUCCESS;
     }
 
     StatusType Industry::CompanyValue(int companyID, void * standing)
@@ -305,7 +389,7 @@ namespace ULIFB
 
         Company* comp_to_find = companies_union.find(companyID)->data;
         // we know that the company has to exist because its ID is legal therefore there's no need to check if it was found.
-        if (companyID == 5 )
+        if (companyID == 7 )
         {
             int x = 0;
         }
