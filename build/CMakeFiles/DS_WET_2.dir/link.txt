@@ -1,3 +1,0 @@
-C:\CMake\bin\cmake.exe -E rm -f CMakeFiles\DS_WET_2.dir/objects.a
-C:\TDM-GCC-64\bin\ar.exe cr CMakeFiles\DS_WET_2.dir/objects.a @CMakeFiles\DS_WET_2.dir\objects1.rsp
-C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe -g -Wl,--whole-archive CMakeFiles\DS_WET_2.dir/objects.a -Wl,--no-whole-archive -o DS_WET_2.exe -Wl,--out-implib,libDS_WET_2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\DS_WET_2.dir\linklibs.rsp
