@@ -236,12 +236,12 @@ namespace ULIFB
 
             long double average = (sum_of_grades/num_of_employees_in_bounds);
             ////////////////////////// to remove!!!!!!!!!!!!!!!!
-            long long int temp = (long long int)( average * 10);
-            long double improved_average = ((long double)temp)/10;
-            if(abs(improved_average + 0.1 - average ) <= 0.0000000001){
-                improved_average += 0.1;
-            }
-            average = improved_average;
+            // long long int temp = (long long int)( average * 10);
+            // long double improved_average = ((long double)temp)/10;
+            // if(abs(improved_average + 0.1 - average ) <= 0.0000000001){
+            //     improved_average += 0.1;
+            // }
+            // average = improved_average;
             //////////////////////////// to remove!!!!!!!!!!!!!!
             printf("AverageBumpGradeBetweenSalaryByGroup: %.1Lf\n", average);
             
@@ -286,12 +286,12 @@ namespace ULIFB
         long double average = (sum_of_grades/num_of_employees_in_bounds);
 
         ////////////////////////// to remove!!!!!!!!!!!!!!!!
-            long long int temp = (long long int)( average * 10);
-            long double improved_average = ((long double)temp)/10;
-            if(abs(improved_average + 0.1 - average ) <= 0.0000000001){
-                improved_average += 0.1;
-            }
-            average = improved_average;
+            // long long int temp = (long long int)( average * 10);
+            // long double improved_average = ((long double)temp)/10;
+            // if(abs(improved_average + 0.1 - average ) <= 0.0000000001){
+            //     improved_average += 0.1;
+            // }
+            // average = improved_average;
             //////////////////////////// to remove!!!!!!!!!!!!!!
             printf("AverageBumpGradeBetweenSalaryByGroup: %.1Lf\n", average);
         return SUCCESS;
