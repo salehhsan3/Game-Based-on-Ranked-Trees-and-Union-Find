@@ -1,0 +1,63 @@
+{
+    "files.associations": {
+        "*.json": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp",
+        "atomic": "cpp",
+        "cmath": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "cstddef": "cpp",
+        "cstdint": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "cwchar": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "ios": "cpp",
+        "iosfwd": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "iterator": "cpp",
+        "limits": "cpp",
+        "memory": "cpp",
+        "new": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp",
+        "streambuf": "cpp",
+        "system_error": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "typeinfo": "cpp",
+        "utility": "cpp",
+        "xfacet": "cpp",
+        "xiosbase": "cpp",
+        "xlocale": "cpp",
+        "xlocinfo": "cpp",
+        "xlocnum": "cpp",
+        "xmemory": "cpp",
+        "xstddef": "cpp",
+        "xstring": "cpp",
+        "xtr1common": "cpp",
+        "xutility": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "*.tcc": "cpp"
+    },
+    "remote.WSL.debug": false,
+    "C_Cpp.debugger.useBacktickCommandSubstitution": false,
+    "launch": {
+
+        "configurations": [
+            // {
+            //     "type": "default",
+            //     "project" : "DS_WET_2.exe",
+            //     "projectTarget": "",
+            //     "name" : "DS_WET_2.exe",
+            //     "args":["C:\\Users\\Saleh\\Desktop\\Data-Structures\\spring\\DS-WET_2\\Tests\\WithoutBonus\\input\\in0.txt"]
+            // }
+        ],
+        "compounds": []
+    }
+}
