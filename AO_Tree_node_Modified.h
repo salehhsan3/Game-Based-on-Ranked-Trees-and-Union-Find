@@ -14,7 +14,7 @@ template<class Key, class Data>
 class tree_node_modified{
 public:
     // fields
-    Key *key;
+    Key *key;//sas
     Data *data;
     tree_node_modified<Key, Data> *parent;
     tree_node_modified<Key, Data> *left_son;
