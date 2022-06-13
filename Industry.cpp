@@ -248,10 +248,6 @@ namespace ULIFB
 
             return SUCCESS;
         }
-        if (companyID == 9 )
-        {
-            int x = 0;
-        }
         
         Company* company = companies_union.find(companyID)->data;
         shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
@@ -328,16 +324,16 @@ namespace ULIFB
         
     }
 
-    StatusType Industry::BumpGradeToEmployees(int lowerSalary, int higherSalary, int bumpGrade)//bonus
-    {
-        if ((lowerSalary > higherSalary) || (bumpGrade <= 0) )
-        {
-            return INVALID_INPUT;
-        }
+    // StatusType Industry::BumpGradeToEmployees(int lowerSalary, int higherSalary, int bumpGrade)//bonus
+    // {
+    //     if ((lowerSalary > higherSalary) || (bumpGrade <= 0) )
+    //     {
+    //         return INVALID_INPUT;
+    //     }
         
 
 
-        return SUCCESS;
-    }
+    //     return SUCCESS;
+    // }
 
 }

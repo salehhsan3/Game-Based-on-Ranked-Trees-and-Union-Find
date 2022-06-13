@@ -78,14 +78,14 @@ StatusType AverageBumpGradeBetweenSalaryByGroup(void *DS, int companyID, int low
         return static_cast<ULIFB::Industry*>(DS)->CompanyValue(companyID);
     }
 
-    StatusType BumpGradeToEmployees(void *DS, int lowerSalary, int higherSalary, int bumpGrade)
-    {
-        if (DS == NULL)
-        {
-            return INVALID_INPUT;
-        }
-        return static_cast<ULIFB::Industry*>(DS)->BumpGradeToEmployees(lowerSalary,higherSalary,bumpGrade);
-    }
+    // StatusType BumpGradeToEmployees(void *DS, int lowerSalary, int higherSalary, int bumpGrade)
+    // {
+    //     if (DS == NULL)
+    //     {
+    //         return INVALID_INPUT;
+    //     }
+    //     return static_cast<ULIFB::Industry*>(DS)->BumpGradeToEmployees(lowerSalary,higherSalary,bumpGrade);
+    // }
 
     void Quit(void** DS)
     {

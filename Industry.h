@@ -64,7 +64,7 @@ namespace ULIFB
         long double findSpecificCompanyValue(Company* comp,int companyID);
 
         // 20 point Bonus function:
-        StatusType BumpGradeToEmployees(int lowerSalary, int higherSalary, int bumpGrade);
+        // StatusType BumpGradeToEmployees(int lowerSalary, int higherSalary, int bumpGrade);
     };
     
 }
