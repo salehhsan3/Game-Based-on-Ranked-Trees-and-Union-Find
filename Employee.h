@@ -19,8 +19,8 @@ namespace ULIFB
     class SalaryID
     {
         public:
-            int salary;
-            int ID;
+            long long int salary;
+            long long int ID;
             SalaryID(int salary,int id):
                     salary(salary),
                     ID(id)
@@ -54,11 +54,11 @@ namespace ULIFB
             {
                 return(! ( (*this) < other) );
             }
-            int getSalary()
+            long long int getSalary()
             {
                 return this->salary;
             }
-            int getID()
+            long long int getID()
             {
                 return this->ID;
             }
@@ -66,12 +66,12 @@ namespace ULIFB
     class Employee
     {
     private:
-        int id;
-        int company_id;
-        int grade;
-        int salary;
+        long long int id;
+        long long int company_id;
+        long long int grade;
+        long long int salary;
     public:
-        Employee(int id,int company_id, int grade,int salary=0):
+        Employee(long long int id,long long int company_id, int grade,long long int salary=0):
             id(id),
             company_id(company_id),
             grade(grade),
@@ -80,14 +80,14 @@ namespace ULIFB
         Employee(const Employee& emp) = default;
         Employee& operator=(const Employee& emp) = default;
         ~Employee() = default;
-        int getEmployeeID();
-        int getEmployeeGrade();
-        int getEmployeeSalary();
-        int getEmployersid();
-        void increaseSalary(int increase);
-        void bumpGrade(int bump);
-        void changeGrade(int change);
-        void UpdateCompanyID(int NewID);
+        long long int getEmployeeID();
+        long long int getEmployeeGrade();
+        long long int getEmployeeSalary();
+        long long int getEmployersid();
+        void increaseSalary(long long int increase);
+        void bumpGrade(long long int bump);
+        void changeGrade(long long int change);
+        void UpdateCompanyID(long long int NewID);
         SalaryID getEmployeeSalaryID();
 
     };

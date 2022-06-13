@@ -34,19 +34,19 @@ public:
     void printTree() {
         tree_node<Key, Data>::printInorder(std::cout, this->root);
     }
-    AVL_Tree<Key, Data>& operator=(AVL_Tree<struct player_level, int> *tree);
+    AVL_Tree<Key, Data>& operator=(AVL_Tree<struct player_level, long long int> *tree);
     tree_node<Key, Data> *copyTreeNode(tree_node<Key, Data> root);
-    int findRank(Key key);
-    int findRankAux(tree_node<Key, Data> *curr_root, Key key, int aux);
-    int findSumSmaller(Key key);
-    int findSumSmallerAux(tree_node<Key, Data> *curr_root, Key key, int aux);
-    tree_node<Key, Data>* Select(tree_node<Key, Data> *root, int rank);
+    long long int findRank(Key key);
+    long long int findRankAux(tree_node<Key, Data> *curr_root, Key key, long long int aux);
+    long long int findSumSmaller(Key key);
+    long long int findSumSmallerAux(tree_node<Key, Data> *curr_root, Key key, long long int aux);
+    tree_node<Key, Data>* Select(tree_node<Key, Data> *root, long long int rank);
 
 };
 
 
 template<class Key, class Data>
-int AVL_Tree<Key, Data>::findSumSmaller(Key key) {
+long long int AVL_Tree<Key, Data>::findSumSmaller(Key key) {
     if(!findNode(key)){
         return -1;
     }
@@ -54,7 +54,7 @@ int AVL_Tree<Key, Data>::findSumSmaller(Key key) {
 }
 
 template<class Key, class Data>
-int AVL_Tree<Key, Data>::findSumSmallerAux(tree_node<Key, Data> *curr_root, Key key, int aux) {
+long long int AVL_Tree<Key, Data>::findSumSmallerAux(tree_node<Key, Data> *curr_root, Key key, long long int aux) {
     if(*curr_root->key == key){
         if(curr_root->left_son){
             return aux + curr_root->left_son->sons_sum;
@@ -76,7 +76,7 @@ int AVL_Tree<Key, Data>::findSumSmallerAux(tree_node<Key, Data> *curr_root, Key 
 
 
 template<class Key, class Data>
-int AVL_Tree<Key, Data>::findRank(Key key) {
+long long int AVL_Tree<Key, Data>::findRank(Key key) {
     if(!findNode(key)){
         return -1;
     }
@@ -84,7 +84,7 @@ int AVL_Tree<Key, Data>::findRank(Key key) {
 }
 
 template<class Key, class Data>
-int AVL_Tree<Key, Data>::findRankAux(tree_node<Key, Data> *curr_root, Key key, int aux) {
+long long int AVL_Tree<Key, Data>::findRankAux(tree_node<Key, Data> *curr_root, Key key, long long int aux) {
     if(*curr_root->key == key){
         if(curr_root->left_son){
             return aux + curr_root->left_son->sons_num + 1;
@@ -237,7 +237,7 @@ tree_node<Key, Data>* AVL_Tree<Key, Data>::addNodeAux(tree_node<Key, Data> *curr
     curr_root->updateHeight();
     curr_root->updateNum();
     curr_root->updateSum();
-    int BF = curr_root->getBalance();
+    long long int BF = curr_root->getBalance();
     //left left
     if (BF > 1 && key < *curr_root->left_son->key) {
         return LL(curr_root);
@@ -350,7 +350,7 @@ tree_node<Key, Data>* AVL_Tree<Key, Data>::removeNodeAux(tree_node<Key, Data> *c
 }
 
 template<class Key, class Data>
-AVL_Tree<Key, Data>& AVL_Tree<Key, Data>::operator=(AVL_Tree<struct player_level, int> *tree) {
+AVL_Tree<Key, Data>& AVL_Tree<Key, Data>::operator=(AVL_Tree<struct player_level, long long int> *tree) {
     treeClear();
     root = tree->root;
     size = tree->size;
@@ -373,7 +373,7 @@ tree_node<Key, Data>* AVL_Tree<Key, Data>::copyTreeNode(tree_node<Key, Data> roo
 }
 
 template<class Key, class Data>
-tree_node<Key, Data> *AVL_Tree<Key, Data>::Select(tree_node<Key, Data> *root, int rank) {
+tree_node<Key, Data> *AVL_Tree<Key, Data>::Select(tree_node<Key, Data> *root, long long int rank) {
     if (root == nullptr)
     {
         return nullptr; // empty tree case!

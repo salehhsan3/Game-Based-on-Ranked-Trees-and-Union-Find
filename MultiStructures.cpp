@@ -13,39 +13,28 @@ namespace ULIFB
         this->number_of_employees_with_no_salary--;
     }
 
-    void MultiStructures::decreaseSumOfGradesEmployeesWithNoSalary(int decrease)
+    void MultiStructures::decreaseSumOfGradesEmployeesWithNoSalary(long long int decrease)
     {
         this->sum_of_grades_for_emp_with_no_salary -= decrease;
     }
 
-    void MultiStructures::increaseSumOfGradesEmployeesWithNoSalary(int increase)
+    void MultiStructures::increaseSumOfGradesEmployeesWithNoSalary(long long int increase)
     {
         this->sum_of_grades_for_emp_with_no_salary += increase;
     }
 
     void MultiStructures::addEmployee(SalaryID sal_id,shared_ptr<Employee> emp_to_add)
     {
-        int x = 0;
-        if (emp_to_add->getEmployeeSalary() == 112 || emp_to_add->getEmployeeID() == 138)
-        {
-            x++;
-        }
-        if (sal_id.getSalary() == 112 || sal_id.getID() == 138)
-        {
-            x++;
-        }
-        
         employees.addElement(emp_to_add->getEmployeeID(), emp_to_add);
         number_of_employees_with_no_salary++;
         sum_of_grades_for_emp_with_no_salary += emp_to_add->getEmployeeGrade();
         total_num_of_employees++;
-
     }
 
     shared_ptr<Employee> MultiStructures::findEmployee(int emp_id)
     {
         // complexity is O(1) on average!
-        Node<int,shared_ptr<Employee>>* emp_to_find =  this->employees.Find(emp_id);
+        Node<long long int,shared_ptr<Employee>>* emp_to_find =  this->employees.Find(emp_id);
         if (emp_to_find != nullptr)
         {
             return(*(emp_to_find->data)); // returns the data if the emp was found!
@@ -55,12 +44,6 @@ namespace ULIFB
 
     void MultiStructures::removeEmployee(int emp_id)
     {
-
-        int x = 0;
-        if (emp_id == 138)
-        {
-            x++;
-        }
         // complexity is O(log(n))!
         shared_ptr<Employee> emp_to_find = this->findEmployee(emp_id);
         if (emp_to_find == nullptr)
@@ -82,7 +65,7 @@ namespace ULIFB
         this->total_num_of_employees--; // saleh, added --
     }
 
-    void MultiStructures::IncreaseEmployeeSalary(int emp_id, int increase)
+    void MultiStructures::IncreaseEmployeeSalary(int emp_id, long long int increase)
     {
         // complexity is O(log(n))!
         shared_ptr<Employee> emp_to_find =  this->findEmployee(emp_id);
@@ -107,7 +90,7 @@ namespace ULIFB
         
     }
 
-    void MultiStructures::promoteEmployee(int emp_id, int bump)
+    void MultiStructures::promoteEmployee(int emp_id, long long int bump)
     {
         // saleh's code to test other functions - remove later
         // complexity is O(log(n))!
@@ -136,7 +119,7 @@ namespace ULIFB
         }
     }
 
-    int MultiStructures::getSonsSumOnly(tree_node<SalaryID,shared_ptr<Employee>> *node)
+    long long int MultiStructures::getSonsSumOnly(tree_node<SalaryID,shared_ptr<Employee>> *node)
     {
         if (node == nullptr)
         {
@@ -147,7 +130,7 @@ namespace ULIFB
         
     }
 
-    int MultiStructures::getSonsNumOnly(tree_node<SalaryID,shared_ptr<Employee>> *node)
+    long long int MultiStructures::getSonsNumOnly(tree_node<SalaryID,shared_ptr<Employee>> *node)
     {
         if (node == nullptr)
         {
@@ -157,7 +140,7 @@ namespace ULIFB
         
     }
 
-    int MultiStructures::getNodeSumInSubTree(tree_node<SalaryID,shared_ptr<Employee>> * node)
+    long long int MultiStructures::getNodeSumInSubTree(tree_node<SalaryID,shared_ptr<Employee>> * node)
     {
         if (node == nullptr)
         {
@@ -166,7 +149,7 @@ namespace ULIFB
         return node->sons_sum;
     }
 
-    int MultiStructures::getNodeNumInSubTree(tree_node<SalaryID,shared_ptr<Employee>> * node)
+    long long int MultiStructures::getNodeNumInSubTree(tree_node<SalaryID,shared_ptr<Employee>> * node)
     {
         if (node == nullptr)
         {
@@ -175,7 +158,7 @@ namespace ULIFB
         return node->sons_num;
     }
 
-    void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,int *sum, int *num)
+    void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,long long int *sum, long long int *num)
     {
         // slightly modified solution, maybe wrong!
         // if (node == nullptr || (*num) == 0)
@@ -217,7 +200,7 @@ namespace ULIFB
         
     }
 
-    tree_node<SalaryID,shared_ptr<Employee>> *MultiStructures::findNodeWithSufficientSons(tree_node<SalaryID,shared_ptr<Employee>> * node,int num_of_top_workers)
+    tree_node<SalaryID,shared_ptr<Employee>> *MultiStructures::findNodeWithSufficientSons(tree_node<SalaryID,shared_ptr<Employee>> * node,long long int num_of_top_workers)
     {
         // start from the maximum and go up!
         if (node == nullptr)
@@ -233,15 +216,15 @@ namespace ULIFB
             return findNodeWithSufficientSons(node->parent,num_of_top_workers);    
         }
         //shouldnt get here
-        return nullptr;
+        return nullptr;        
     }
 
-    int MultiStructures::SumOfBumpGradeBetweenTopWorkersByGroup(int number_of_top_workers)
+    long long int MultiStructures::SumOfBumpGradeBetweenTopWorkersByGroup(long long int number_of_top_workers)
     {
         // complexity is O(log*(k) + log(n))  
 
-        int sum = 0;
-        int num = 0;
+        long long int sum = 0;
+        long long int num = 0;
         // start the search from the most right node!
         tree_node<SalaryID,shared_ptr<Employee>> *current = findNodeWithSufficientSons(this->employees_with_salary.max,number_of_top_workers);
         if (current == nullptr)
@@ -252,11 +235,6 @@ namespace ULIFB
         num = number_of_top_workers;
         sum = 0;
         getSumOfGradesAux(current,&sum,&num);
-        int x=0;
-        if (sum == 134)
-        {
-            x = 9;
-        }
         current = findNodeWithSufficientSons(this->employees_with_salary.max,number_of_top_workers);// to remove
         num = number_of_top_workers; // to remove
         sum = 0;// to remove
@@ -274,7 +252,7 @@ namespace ULIFB
         return(&(this->employees_with_salary));
     }
 
-    void MultiStructures::MoveTreeToArray(shared_ptr<Employee> * array, tree_node<SalaryID, shared_ptr<Employee> >* node, int* counter_ptr, int num)
+    void MultiStructures::MoveTreeToArray(shared_ptr<Employee> * array, tree_node<SalaryID, shared_ptr<Employee> >* node, long long int* counter_ptr, long long int num)
     {
         if (node == nullptr || *counter_ptr == num ) {
             return;
@@ -375,11 +353,11 @@ namespace ULIFB
 
     void MultiStructures::MergeHashTable(hash_table<shared_ptr<Employee>> *other) // saleh
     {
-        LList<int,shared_ptr<Employee>>* current_list = other->arr[0];
-        for (int i = 0; i < other->arr_size; i++) // maybe arr_size+1
+        LList<long long int,shared_ptr<Employee>>* current_list = other->arr[0];
+        for (long long int i = 0; i < other->arr_size; i++) // maybe arr_size+1
         {
             current_list = other->arr[i];
-            Node<int, shared_ptr<Employee>>* current_node = current_list->head->next;
+            Node<long long int, shared_ptr<Employee>>* current_node = current_list->head->next;
             while (current_node != current_list->tail)
             {
                 this->getEmployesHashTable()->addElement(current_node->key,*(current_node->data));
@@ -390,11 +368,11 @@ namespace ULIFB
 
     void MultiStructures::UpdateOwnerIdInHash(int new_owner) // saleh
     {
-        LList<int,shared_ptr<Employee>>* current_list = this->employees.arr[0];
+        LList<long long int,shared_ptr<Employee>>* current_list = this->employees.arr[0];
         for (int i = 0; i < this->employees.arr_size; i++) // maybe arr_size+1
         {
             current_list = this->employees.arr[i];
-            Node<int, shared_ptr<Employee>>* current_node = current_list->head->next;
+            Node<long long int, shared_ptr<Employee>>* current_node = current_list->head->next;
             while (current_node != current_list->tail)
             {
                 current_node->data->get()->UpdateCompanyID(new_owner);
@@ -415,14 +393,14 @@ namespace ULIFB
         
     }
 
-    int MultiStructures::countNodes(tree_node<SalaryID, shared_ptr<Employee>>* node)
-    {
-        if( node == nullptr)
-        {
-            return 0;
-        }
-        return (countNodes(node->left_son) + countNodes(node->right_son) + 1);
-    }
+    // long long int MultiStructures::countNodes(tree_node<SalaryID, shared_ptr<Employee>>* node)
+    // {
+    //     if( node == nullptr)
+    //     {
+    //         return 0;
+    //     }
+    //     return (countNodes(node->left_son) + countNodes(node->right_son) + 1);
+    // }
 
     void MultiStructures::MergeStructures(MultiStructures *other, int new_owner)
     {
@@ -439,15 +417,14 @@ namespace ULIFB
             return; // there's nothing to merge!
         }
         
-        // this->employees.MergeHashTable(other->getEmployesHashTable());
         this->MergeHashTable(other->getEmployesHashTable());
         this->UpdateOwnerIdInHash(new_owner);
         other->getEmployesHashTable()->DeleteHashTable();
         
         //tree merge
-        int acquirer_num = this->employees_with_salary.size;
-        int target_num = other->employees_with_salary.size;
-        int after_num = acquirer_num + target_num;
+        long long int acquirer_num = this->employees_with_salary.size;
+        long long int target_num = other->employees_with_salary.size;
+        long long int after_num = acquirer_num + target_num;
         if (target_num == 0)
         {
             other->getEmployeesWithSalaryTree()->treeClear(); // saleh
@@ -456,20 +433,11 @@ namespace ULIFB
         AVL_Tree<SalaryID, shared_ptr<Employee>>* acquirer_employee_tree = this->getEmployessWithSalaryTree();
         AVL_Tree<SalaryID, shared_ptr<Employee>>* target_employee_tree = other->getEmployessWithSalaryTree();
 
-        // int acquirer_num = countNodes(this->employees_with_salary.root);
-        // int target_num = countNodes(other->employees_with_salary.root);
-        // int after_num = acquirer_num + target_num;
-        // if (target_num == 0)
-        // {
-        //     other->getEmployeesWithSalaryTree()->treeClear(); // saleh
-        //     return; // there's nothing to merge!
-        // }
-
         shared_ptr<Employee> *acquirer_employees_arr = new shared_ptr<Employee>[acquirer_num]();
         shared_ptr<Employee> *target_employees_arr = new shared_ptr<Employee>[target_num]();
 
-        int counter = 0;
-        int *counter_ptr = &counter;
+        long long int counter = 0;
+        long long int *counter_ptr = &counter;
         MoveTreeToArray(acquirer_employees_arr, acquirer_employee_tree->root, &counter, acquirer_num);
         *counter_ptr = 0;
         MoveTreeToArray(target_employees_arr, target_employee_tree->root, &counter, target_num);
@@ -490,7 +458,7 @@ namespace ULIFB
         
     }
 
-    tree_node<SalaryID,shared_ptr<Employee>> *MultiStructures::findSalaryNode(tree_node<SalaryID,shared_ptr<Employee>>* current,int Salary)
+    tree_node<SalaryID,shared_ptr<Employee>> *MultiStructures::findSalaryNode(tree_node<SalaryID,shared_ptr<Employee>>* current,long long int Salary)
     {
         if (current == nullptr)
         {
@@ -546,7 +514,7 @@ namespace ULIFB
         
     }
 
-    void MultiStructures::AdjustSummation(tree_node<SalaryID,shared_ptr<Employee>> *node,SalaryID minbound, SalaryID maxbound,int *sum_ptr, int *num_ptr)
+    void MultiStructures::AdjustSummation(tree_node<SalaryID,shared_ptr<Employee>> *node,SalaryID minbound, SalaryID maxbound,long long int *sum_ptr, long long int *num_ptr)
     {
         if (node == nullptr)
         {
@@ -590,10 +558,10 @@ namespace ULIFB
         }
     }
 
-    double MultiStructures::AverageBumpGradeBetweenSalaryByGroup(int lowerSalary, int higherSalary)
+    long double MultiStructures::AverageBumpGradeBetweenSalaryByGroup(int lowerSalary, int higherSalary)
     {
-        int num_of_employees_in_range = 0;
-        int sum_of_employees_grade_in_range = 0;
+        long long int num_of_employees_in_range = 0;
+        long long int sum_of_employees_grade_in_range = 0;
         if ( lowerSalary == 0 )
         {
             num_of_employees_in_range += this->number_of_employees_with_no_salary;
@@ -673,12 +641,12 @@ namespace ULIFB
             arr3[k++] = arr2[j++];
     }
 
-    tree_node<SalaryID, shared_ptr<Employee>>* MultiStructures::createTreeFromSortedArrAuxForSalary(shared_ptr<Employee> array[], int start,
-                                                                                         int end, tree_node<SalaryID, shared_ptr<Employee>> *parent)
+    tree_node<SalaryID, shared_ptr<Employee>>* MultiStructures::createTreeFromSortedArrAuxForSalary(shared_ptr<Employee> array[], long long int start,
+                                                                                         long long int end, tree_node<SalaryID, shared_ptr<Employee>> *parent)
     {
         if(start > end)
             return nullptr;
-        int mid = (start+end)/2;
+        long long int mid = (start+end)/2;
         tree_node<SalaryID, shared_ptr<Employee>> *new_node = new tree_node<SalaryID, shared_ptr<Employee>>(array[mid]->getEmployeeSalaryID(),array[mid],parent, nullptr, nullptr, 0);
         new_node->left_son = createTreeFromSortedArrAuxForSalary(array, start, mid-1, new_node);
         new_node->right_son = createTreeFromSortedArrAuxForSalary(array, mid+1, end, new_node);
@@ -686,7 +654,7 @@ namespace ULIFB
         return new_node;
     }
 
-    void MultiStructures::bumpGradeForSumOfGradesForEmpWhithNoSalary(int bumpGrade){
+    void MultiStructures::bumpGradeForSumOfGradesForEmpWhithNoSalary(long long int bumpGrade){
         sum_of_grades_for_emp_with_no_salary+=bumpGrade;
     }
 
@@ -694,11 +662,11 @@ namespace ULIFB
         return &employees_with_salary;
     }
 
-    int MultiStructures::getNumOfEmployeesWithNoSalary(){
+    long long int MultiStructures::getNumOfEmployeesWithNoSalary(){
         return number_of_employees_with_no_salary;
     }
 
-    int MultiStructures::getSumOfGradesForEmployeesWithNoSalary(){
+    long long int MultiStructures::getSumOfGradesForEmployeesWithNoSalary(){
         return sum_of_grades_for_emp_with_no_salary;
     }
 

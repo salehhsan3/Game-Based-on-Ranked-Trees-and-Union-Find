@@ -61,7 +61,7 @@ namespace ULIFB
         StatusType AverageBumpGradeBetweenSalaryByGroup(int companyID, int lowerSalary, int higherSalary);
 
         StatusType CompanyValue(int companyID);
-        double findSpecificCompanyValue(Company* comp,int companyID);
+        long double findSpecificCompanyValue(Company* comp,int companyID);
 
         // 20 point Bonus function:
         StatusType BumpGradeToEmployees(int lowerSalary, int higherSalary, int bumpGrade);

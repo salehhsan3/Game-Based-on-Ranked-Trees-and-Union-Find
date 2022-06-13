@@ -19,14 +19,14 @@ public:
     tree_node<Key, Data> *parent;
     tree_node<Key, Data> *left_son;
     tree_node<Key, Data> *right_son;
-    int height;
-    int sons_num;
-    int sum;
-    int sons_sum;
+    long long int height;
+    long long int sons_num;
+    long long int sum;
+    long long int sons_sum;
 
     //methods
-    tree_node(Key key, Data data, tree_node *parent, tree_node *left_son, tree_node *right_son, int height = 0,
-              int sons_num = 1, int sum = 0, int sons_sum = 0):
+    tree_node(Key key, Data data, tree_node *parent, tree_node *left_son, tree_node *right_son, long long int height = 0,
+              long long int sons_num = 1, long long int sum = 0, long long int sons_sum = 0):
     key(new Key(key)), data(new Data(data)), parent(parent), left_son(left_son), right_son(right_son), height(height)
     , sons_num(sons_num), sum(sum), sons_sum(sons_sum){}
 
@@ -54,7 +54,7 @@ public:
 
     void updateSum();
 
-    int getBalance();
+    long long int getBalance();
 
     static void printInorder(std::ostream &out, tree_node *node);
 
@@ -172,7 +172,7 @@ void tree_node<Key, Data>::updateSum() {
 
 
 template<class Key, class Data>
-int tree_node<Key, Data>::getBalance() { 
+long long int tree_node<Key, Data>::getBalance() { 
     if (this->left_son == nullptr) {
         if (this->right_son == nullptr) {
             return 0;

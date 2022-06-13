@@ -12,10 +12,10 @@ public:
     Key key;
     Data data;
     Up_Tree_node<Key, Data> *parent;
-    int size;
-    double offset; // additional info - saleh
+    long long int size;
+    long double offset; // additional info - saleh
 
-    Up_Tree_node(Key key, Data data,  Up_Tree_node<Key, Data> *parent, int size=1, int offset = 0) : key(key),
+    Up_Tree_node(Key key, Data data,  Up_Tree_node<Key, Data> *parent, long long int size=1, long double offset = 0) : key(key),
     data(data), parent(parent), size(size), offset(offset){}
 
     ~ Up_Tree_node();

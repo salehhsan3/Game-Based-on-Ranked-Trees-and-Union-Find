@@ -87,9 +87,9 @@ class LList{
 public:
     Node<Key, Data>* head;
     Node<Key, Data>* tail;
-    int list_size;
+    long long int list_size;
     LList();
-    LList(Node<Key, Data> *head, Node<Key, Data> *tail, int size);
+    LList(Node<Key, Data> *head, Node<Key, Data> *tail, long long int size);
     ~LList();
     Node<Key, Data> *findNode(Key key);
     void addNode(Key key, Data data);
@@ -107,7 +107,7 @@ LList<Key, Data>::LList(): list_size(0){
 }
 
 template<class Key, class Data>
-LList<Key, Data>::LList(Node<Key, Data> *head, Node<Key, Data> *tail, int size):
+LList<Key, Data>::LList(Node<Key, Data> *head, Node<Key, Data> *tail, long long int size):
         head(head), tail(tail), list_size(size){}
 
 template<class Key, class Data>

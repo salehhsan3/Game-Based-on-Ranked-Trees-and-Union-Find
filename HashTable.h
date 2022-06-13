@@ -11,34 +11,34 @@
 template<class Data>
 class hash_table{
 public:
-    int arr_size;
-    int elements_num;
-    LList<int,Data>** arr;
+    long long int arr_size;
+    long long int elements_num;
+    LList<long long int,Data>** arr;
 
-    hash_table():arr_size(ARR_INITIAL_SIZE), elements_num(0), arr(new LList<int, Data>*[ARR_INITIAL_SIZE]){
-        for(int i=0; i<ARR_INITIAL_SIZE; i++){
-            arr[i] = new LList<int, Data>();
+    hash_table():arr_size(ARR_INITIAL_SIZE), elements_num(0), arr(new LList<long long int, Data>*[ARR_INITIAL_SIZE]){
+        for(long long int i=0; i<ARR_INITIAL_SIZE; i++){
+            arr[i] = new LList<long long int, Data>();
         }
     }
 
-    void addElement(int id, Data data){
+    void addElement(long long int id, Data data){
         arr[id % arr_size]->addNode(id, data);
         elements_num++;
         if(elements_num >= arr_size){
-            int new_size = arr_size * 2;
-            auto** new_arr = new LList<int, Data>*[new_size];
-            for(int i=0; i<new_size; i++){
-                new_arr[i] = new LList<int, Data>();
+            long long int new_size = arr_size * 2;
+            auto** new_arr = new LList<long long int, Data>*[new_size];
+            for(long long int i=0; i<new_size; i++){
+                new_arr[i] = new LList<long long int, Data>();
             }
-            for(int i = 0; i<arr_size; i++){
-                Node<int, Data>* tmp = arr[i]->head->next;
+            for(long long int i = 0; i<arr_size; i++){
+                Node<long long int, Data>* tmp = arr[i]->head->next;
                 while(tmp != arr[i]->tail){
-                    int id = tmp->key;
+                    long long int id = tmp->key;
                     new_arr[id % new_size]->addNode(id, *tmp->data);
                     tmp = tmp->next;
                 }
             }
-            for(int i = 0; i < arr_size; i++){
+            for(long long int i = 0; i < arr_size; i++){
                 delete(arr[i]);
             }
             delete[](arr);
@@ -47,24 +47,24 @@ public:
         }
     }
 
-    void deleteElement(int id){
+    void deleteElement(long long int id){
         arr[id % arr_size]->deleteNode(id);
         elements_num--;
         if(elements_num <= arr_size/2 && arr_size>ARR_INITIAL_SIZE){
-            int new_size = arr_size / 2;
-            auto** new_arr = new LList<int, Data>*[new_size];
-            for(int i=0; i<new_size; i++){
-                new_arr[i] = new LList<int, Data>();
+            long long int new_size = arr_size / 2;
+            auto** new_arr = new LList<long long int, Data>*[new_size];
+            for(long long int i=0; i<new_size; i++){
+                new_arr[i] = new LList<long long int, Data>();
             }
-            for(int i = 0; i<arr_size; i++){
-                Node<int, Data>* tmp = arr[i]->head->next;
+            for(long long int i = 0; i<arr_size; i++){
+                Node<long long int, Data>* tmp = arr[i]->head->next;
                 while(tmp != arr[i]->tail){
-                    int id = tmp->key;
+                    long long int id = tmp->key;
                     new_arr[id % new_size]->addNode(id, *tmp->data);
                     tmp = tmp->next;
                 }
             }
-            for(int i = 0; i < arr_size; i++){
+            for(long long int i = 0; i < arr_size; i++){
                 delete(arr[i]);
             }
             delete[](arr);
@@ -73,13 +73,13 @@ public:
         }
     }
 
-    Node<int, Data> *Find(int id){
+    Node<long long int, Data> *Find(long long int id){
         return arr[id%arr_size]->findNode(id);
     }
 
     void DeleteHashTable()
     {
-        for (int i = 0; i < arr_size; ++i) {
+        for (long long int i = 0; i < arr_size; ++i) {
             delete(arr[i]);
             arr[i] = nullptr; // saleh
         }
@@ -124,7 +124,7 @@ public:
     //     }
     // }
 
-    int getNumberOfElements()
+    long long int getNumberOfElements()
     {
         return(this->elements_num);
     }

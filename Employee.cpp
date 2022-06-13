@@ -6,29 +6,29 @@
 
 namespace ULIFB
 {
-    int Employee::getEmployeeID()
+    long long int Employee::getEmployeeID()
     {
         return id;
     }
-    int Employee::getEmployeeGrade()
+    long long int Employee::getEmployeeGrade()
     {
         return grade;
     }
-    int Employee::getEmployeeSalary()
+    long long int Employee::getEmployeeSalary()
     {
         return salary;
     }
-    int Employee::getEmployersid()
+    long long int Employee::getEmployersid()
     {
         return company_id;
     }
-    void Employee::increaseSalary(int increase)
+    void Employee::increaseSalary(long long int increase)
     {
         (this->salary)+=increase;
         return;
     }
 
-    void Employee::bumpGrade(int bump)
+    void Employee::bumpGrade(long long int bump)
     {
         if (bump > 0)
         {
@@ -37,13 +37,13 @@ namespace ULIFB
         return;
     }
 
-    void Employee::changeGrade(int change)
+    void Employee::changeGrade(long long int change)
     {
         (this->grade += change);
         return;
     }
     
-    void Employee::UpdateCompanyID(int NewID)
+    void Employee::UpdateCompanyID(long long int NewID)
     {
 
         this->company_id = NewID;

@@ -12,70 +12,34 @@ namespace ULIFB
         return(&(this->employees));
     }
 
-    int Company::getCompanyId()
+    long long int Company::getCompanyId()
     {
         return(this->id);
     }
 
-    double Company::getCompanyValue()
+    long double Company::getCompanyValue()
     {
         return(this->value);
     }
 
-    void Company::updateEnterpriseValue(double new_value)
+    void Company::updateEnterpriseValue(long double new_value)
     {
         this->enterprise_value = new_value;
     }
 
-    double Company::getEnterpriseValue()
+    long double Company::getEnterpriseValue()
     {
         return(this->enterprise_value);
     }
 
-    void Company::IncreaseCompanyValue(double increase)
+    void Company::IncreaseCompanyValue(long double increase)
     {
         //correct implementation?
         this->value+=increase;
     }
 
-    void Company::setCompanyValue(double value) {
+    void Company::setCompanyValue(long double value) {
         value = value;
     }
-    
-    
-    // void Company::addEmployee(SalaryID sal_id, shared_ptr<Employee>& emp_to_add)
-    // {
-
-    // }
-
-    // shared_ptr<Employee>& Company::findEmployee(SalaryID sal_id)
-    // {
-
-    // }
-
-    // void Company::removeEmployee(int emp_id)
-    // {
-
-    // }
-
-    // void Company::IncreaseEmployeeSalary(int emp_id, int increase)
-    // {
-
-    // }
-
-    // void Company::promoteEmployee(int emp_id, int bump)
-    // {
-
-    // }
-
-    // int Company::SumOfBumpGradeBetweenTopWorkersByGroup(int number_of_top_workers)
-    // {
-
-    // }
-
-    // double Company::AverageBumpGradeBetweenSalaryByGroup(int lowerSalary, int higherSalary)
-    // {
-
-    // }
 
 }
