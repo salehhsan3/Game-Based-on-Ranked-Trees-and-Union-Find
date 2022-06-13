@@ -1,4 +1,0 @@
-Init done.
-CompanyValue: INVALID_INPUT
-RemoveEmployee: FAILURE
-AverageBumpGradeBetweenSalaryByGroup failed.

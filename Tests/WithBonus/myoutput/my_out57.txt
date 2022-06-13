@@ -1,8 +1,0 @@
-Init done.
-AcquireCompany: INVALID_INPUT
-EmployeeSalaryIncrease: FAILURE
-AcquireCompany: INVALID_INPUT
-SumOfBumpGradeBetweenTopWorkersByGroup: FAILURE
-AcquireCompany: INVALID_INPUT
-PromoteEmployee: FAILURE
-SumOfBumpGradeBetweenTopWorkersByGroup failed.

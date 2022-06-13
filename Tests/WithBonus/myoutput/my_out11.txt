@@ -1,9 +1,0 @@
-Init done.
-RemoveEmployee: FAILURE
-EmployeeSalaryIncrease: FAILURE
-AverageBumpGradeBetweenSalaryByGroup: FAILURE
-SumOfBumpGradeBetweenTopWorkersByGroup: FAILURE
-EmployeeSalaryIncrease: FAILURE
-AverageBumpGradeBetweenSalaryByGroup: FAILURE
-AverageBumpGradeBetweenSalaryByGroup: FAILURE
-SumOfBumpGradeBetweenTopWorkersByGroup failed.

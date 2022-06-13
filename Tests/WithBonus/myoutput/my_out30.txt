@@ -1,6 +1,0 @@
-Init done.
-SumOfBumpGradeBetweenTopWorkersByGroup: FAILURE
-SumOfBumpGradeBetweenTopWorkersByGroup: INVALID_INPUT
-SumOfBumpGradeBetweenTopWorkersByGroup: FAILURE
-EmployeeSalaryIncrease: FAILURE
-AverageBumpGradeBetweenSalaryByGroup failed.
