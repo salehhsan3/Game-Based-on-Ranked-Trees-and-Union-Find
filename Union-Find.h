@@ -81,6 +81,7 @@ public:
         if(size1 >= size2 ){
             root2->parent = root1;
             root2->offset += ( val_inc + root1->data->getCompanyValue() - root2->data->getCompanyValue());
+            root1->data->updateEnterpriseValue( val_inc + root1->data->getEnterpriseValue() );
             root1->size = size1 + size2;
             return root1;
         }
@@ -89,7 +90,7 @@ public:
         // root1->offset += ( root2->data->getCompanyValue() - root1->data->getCompanyValue() ); // + val_inc - val_inc
         // root2->offset += val_inc;
         root1->offset += ( root2->data->getCompanyValue() - val_inc - root1->data->getCompanyValue() );
-        // root1->offset +=
+        root2->data->updateEnterpriseValue( val_inc + root1->data->getEnterpriseValue() );
         root2->size = size1 + size2;
         return root2;
     }

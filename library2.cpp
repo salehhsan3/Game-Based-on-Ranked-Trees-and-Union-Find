@@ -51,31 +51,31 @@
         return static_cast<ULIFB::Industry*>(DS)->PromoteEmployee(employeeID,bumpGrade);
     }
 
-    StatusType SumOfBumpGradeBetweenTopWorkersByGroup(void *DS, int companyID, int m, void ** sumBumpGrade)
+    StatusType SumOfBumpGradeBetweenTopWorkersByGroup(void *DS, int companyID, int m)
     {
         if (DS == NULL)
         {
             return INVALID_INPUT;
         }
-        return static_cast<ULIFB::Industry*>(DS)->SumOfBumpGradeBetweenTopWorkersByGroup(companyID,m,sumBumpGrade);
+        return static_cast<ULIFB::Industry*>(DS)->SumOfBumpGradeBetweenTopWorkersByGroup(companyID,m);
     }
 
-StatusType AverageBumpGradeBetweenSalaryByGroup(void *DS, int companyID, int lowerSalary, int higherSalary, void ** averageBumpGrade)
+StatusType AverageBumpGradeBetweenSalaryByGroup(void *DS, int companyID, int lowerSalary, int higherSalary)
     {
         if (DS == NULL)
         {
             return INVALID_INPUT;
         }
-        return static_cast<ULIFB::Industry*>(DS)->AverageBumpGradeBetweenSalaryByGroup(companyID,lowerSalary,higherSalary,averageBumpGrade);
+        return static_cast<ULIFB::Industry*>(DS)->AverageBumpGradeBetweenSalaryByGroup(companyID,lowerSalary,higherSalary);
     }
 
-    StatusType CompanyValue(void *DS, int companyID, void ** standing)
+    StatusType CompanyValue(void *DS, int companyID)
     {
         if (DS == NULL)
         {
             return INVALID_INPUT;
         }
-        return static_cast<ULIFB::Industry*>(DS)->CompanyValue(companyID,standing);
+        return static_cast<ULIFB::Industry*>(DS)->CompanyValue(companyID);
     }
 
     StatusType BumpGradeToEmployees(void *DS, int lowerSalary, int higherSalary, int bumpGrade)

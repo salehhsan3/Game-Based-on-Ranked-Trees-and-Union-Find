@@ -50,11 +50,12 @@ static const char *commandStr[] = {
         "AcquireCompany",
         "EmployeeSalaryIncrease",
         "PromoteEmployee",
-        "SumOfBumpGradeBetweenTopWorkersByGroup ", // removed space readded
-        "AverageBumpGradeBetweenSalaryByGroup ", // removed space readded
+        "SumOfBumpGradeBetweenTopWorkersByGroup ", // maybe remove space ?
+        "AverageBumpGradeBetweenSalaryByGroup ",  // maybe remove space ?
         "CompanyValue",
         "BumpGradeToEmployees",
-        "Quit" };
+        "Quit"
+};
 
 static const char* ReturnValToStr(int val) {
     switch (val) {
@@ -327,25 +328,13 @@ static errorType OnSumOfBumpGradeBetweenTopWorkersByGroup (void* DS, const char*
     int m;
     ValidateRead(sscanf(command, "%d %d", &companyID, &m), 2,
                  "SumOfBumpGradeBetweenTopWorkersByGroup failed.\n");
-    void* sumBumpGrade;
-    StatusType res = SumOfBumpGradeBetweenTopWorkersByGroup(DS, companyID, m, &sumBumpGrade);
+    StatusType res = SumOfBumpGradeBetweenTopWorkersByGroup(DS, companyID, m);
 
     if (res != SUCCESS) {
         printf("SumOfBumpGradeBetweenTopWorkersByGroup: %s\n", ReturnValToStr(res));
         return error_free;
     }
 
-    /*
-     * Implement here the printing of the variable
-     */
-    if (res == SUCCESS)
-    {
-        void **sum_ptr = &sumBumpGrade;
-        int to_print = (*(int *)sum_ptr);//somehow works!
-        // printf("SumOfBumpGradeBetweenTopWorkersByGroup: %s\n", ReturnValToStr(res));
-        printf("SumOfBumpGradeBetweenTopWorkersByGroup: %d\n", to_print);
-    
-    }
     return error_free;
 }
 
@@ -359,24 +348,13 @@ static errorType OnAverageBumpGradeBetweenSalaryByGroup (void* DS, const char* c
     int higherSalary;
     ValidateRead(sscanf(command, "%d %d %d", &companyID, &lowerSalary, &higherSalary), 3,
                  "AverageBumpGradeBetweenSalaryByGroup failed.\n");
-    void* averageBumpGrade;
-    StatusType res = AverageBumpGradeBetweenSalaryByGroup(DS, companyID, lowerSalary, higherSalary, &averageBumpGrade);
+    StatusType res = AverageBumpGradeBetweenSalaryByGroup(DS, companyID, lowerSalary, higherSalary);
 
     if (res != SUCCESS) {
         printf("AverageBumpGradeBetweenSalaryByGroup: %s\n", ReturnValToStr(res));
         return error_free;
     }
 
-    /*
-     * Implement here the printing of the variable
-     */
-    if (res == SUCCESS)
-    {
-        void **average_ptr = &averageBumpGrade;
-        double to_print = (*(double *)average_ptr);//somehow works!
-        // printf("AverageBumpGradeBetweenSalaryByGroup: %s\n", ReturnValToStr(res));
-        printf("AverageBumpGradeBetweenSalaryByGroup: %.1f\n", to_print);
-    }
     return error_free;
 }
 
@@ -388,31 +366,13 @@ static errorType OnCompanyValue(void* DS, const char* const command) {
     int companyID;
     ValidateRead(sscanf(command, "%d", &companyID), 1,
                  "CompanyValue failed.\n");
-    void* standing;
-    StatusType res = CompanyValue(DS, companyID, &standing);
+    StatusType res = CompanyValue(DS, companyID);
 
     if (res != SUCCESS) {
         printf("CompanyValue: %s\n", ReturnValToStr(res));
         return error_free;
     }
 
-    /*
-     * Implement here the printing of the variable
-     */
-    if (res == SUCCESS)
-    {
-        void **standing_ptr = &standing;
-        double to_print = (*(double *)standing_ptr);//somehow works!
-        // printf("CompanyValue: %s\n", ReturnValToStr(res));
-        // if (to_print == (int)to_print)
-        // {
-        //     printf("CompanyValue: %d\n", (int)to_print);
-        // }
-        // else
-        // {
-            printf("CompanyValue: %.1f\n", to_print);
-        // }
-    }
     return error_free;
 }
 
@@ -420,7 +380,7 @@ static errorType OnCompanyValue(void* DS, const char* const command) {
 /* OnBumpGradeToEmployees                                                        */
 /***************************************************************************/
 
- // 20 points Bonus function:
+// 20 points Bonus function:
 static errorType OnBumpGradeToEmployees(void* DS, const char* const command) {
     int lowerSalary;
     int higherSalary;

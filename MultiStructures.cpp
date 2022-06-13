@@ -71,12 +71,14 @@ namespace ULIFB
         if (emp_to_find->getEmployeeSalary() == 0) //different case depending on the employee's salary!
         {
             this->number_of_employees_with_no_salary--;
-            this->total_num_of_employees--; // saleh, added --
             this->sum_of_grades_for_emp_with_no_salary -= emp_to_find->getEmployeeGrade();
+            employees.deleteElement(emp_id);
+            this->total_num_of_employees--; // saleh, added --
             return;
         }
         // else if salary is bigger than zero remove him from the tree!
-        employees_with_salary.removeNode(SalaryID(emp_to_find->getEmployeeSalary(),emp_id));
+        employees_with_salary.removeNode(emp_to_find->getEmployeeSalaryID());
+        employees.deleteElement(emp_id);
         this->total_num_of_employees--; // saleh, added --
     }
 
@@ -134,97 +136,6 @@ namespace ULIFB
         }
     }
 
-    // void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,int num_of_top_workers,int *sum, int *num)
-    // {
-    //     if (node == nullptr)
-    //     {
-    //         return;
-    //     }
-        
-    //     if ( *num == num_of_top_workers )
-    //     {
-    //         return;
-    //     }
-    //     if ( *num > num_of_top_workers)
-    //     {
-    //         getSumOfGradesAux(node->left_son,num_of_top_workers,sum,num);
-    //         if ( *num == num_of_top_workers )
-    //         {
-    //             return;
-    //         }
-    //         (*num)--;
-    //         *sum -= node->sum;
-    //     }
-    //     if ( *num < num_of_top_workers)
-    //     {
-    //         getSumOfGradesAux(node->right_son,num_of_top_workers,sum,num);
-    //         if ( *num == num_of_top_workers )
-    //         {
-    //             return;
-    //         }
-    //         (*num)++;
-    //         *sum += node->sum;
-    //     }
-        
-    // }
-
-    // void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,int num_of_top_workers,int *sum, int *num)
-    // {
-    //     if (node == nullptr)
-    //     {
-    //         return;
-    //     }
-        
-    //     if ( *num == num_of_top_workers )
-    //     {
-    //         return;
-    //     }
-    //     if ( *num > num_of_top_workers)
-    //     {
-    //         tree_node<SalaryID,shared_ptr<Employee>> * current = node;
-    //         while ( current->left_son != nullptr )
-    //         {
-    //             current = current->left_son;
-    //         }
-    //         if ( ((*num) - (current->sons_num)) <= num_of_top_workers )
-    //         {
-    //             getSumOfGradesAux(current,num_of_top_workers,sum,num);
-    //         }
-    //         else
-    //         {
-    //             return;
-    //         }
-    //         if ( *num == num_of_top_workers )
-    //         {
-    //             return;
-    //         }
-    //         (*sum) -= (current->sons_sum);
-    //         (*num) -= (current->sons_num);
-    //     }
-    //     if ( *num < num_of_top_workers)
-    //     {
-    //         tree_node<SalaryID,shared_ptr<Employee>> * current = node;
-    //         while ( current->right_son != nullptr )
-    //         {
-    //             current = current->right_son;
-    //         }
-    //         if ( ((*num) + (current->sons_num)) >= num_of_top_workers )
-    //         {
-    //             getSumOfGradesAux(current,num_of_top_workers,sum,num);
-    //         }
-    //         else
-    //         {
-    //             return;
-    //         }
-    //         if ( *num == num_of_top_workers )
-    //         {
-    //             return;
-    //         }
-    //         (*sum) += (current->sons_sum);
-    //         (*num) += (current->sons_num);
-    //     }
-        
-    // }
     int MultiStructures::getSonsSumOnly(tree_node<SalaryID,shared_ptr<Employee>> *node)
     {
         if (node == nullptr)
@@ -246,166 +157,6 @@ namespace ULIFB
         
     }
 
-    // void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,int num_of_top_workers,int *sum, int *num)
-    // {
-    //     if (node == nullptr)
-    //     {
-    //         return;
-    //     }
-        
-    //     if ( *num == num_of_top_workers )
-    //     {
-    //         return;
-    //     }
-    //     if ( *num > num_of_top_workers )
-    //     {
-    //         tree_node<SalaryID,shared_ptr<Employee>> * current = node;
-    //         while ( current != nullptr )
-    //         {
-    //             if ( ((*num) - getSonsNumOnly(current->left_son)) <= num_of_top_workers )
-    //             {
-    //                 (*num) -= getSonsNumOnly(current->left_son);
-    //                 (*sum) -= getSonsSumOnly(current->left_son);
-    //                 getSumOfGradesAux(current->left_son,num_of_top_workers,sum,num);
-    //                 if ( *num == num_of_top_workers )
-    //                 {
-    //                     return;
-    //                 }
-    //             }
-    //             else
-    //             {
-    //                 return;
-    //             }
-    //             current = current->left_son;
-    //         }
-    //     }
-    //     if ( *num < num_of_top_workers )
-    //     {
-    //         tree_node<SalaryID,shared_ptr<Employee>> * current = node;
-    //         while ( current != nullptr )
-    //         {
-    //             if ( ((*num) + (current->sons_num)) >= num_of_top_workers )
-    //             {
-    //                 (*num) += getSonsNumOnly(current->right_son);
-    //                 (*sum) += getSonsSumOnly(current->right_son);
-    //                 getSumOfGradesAux(current->right_son,num_of_top_workers,sum,num);
-    //                 if ( *num == num_of_top_workers )
-    //                 {
-    //                     return;
-    //                 }
-    //             }
-    //             else
-    //             {
-    //                 return;
-    //             }
-    //             current = current->right_son;
-    //         }
-    //     }
-        
-    // }
-
-    // void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,int *sum, int *num)
-    // {
-    //     if( node == nullptr || ( (*num) == 0 ) )
-    //     {
-    //         return;
-    //     }
-
-    //     while ( (*num) < 0 )
-    //     {
-    //         if( node->left_son == nullptr)
-    //         {
-    //             if( node->sons_num >= (-(*num)) ) 
-    //             {   
-    //                 (*sum) -= node->sons_sum;
-    //                 (*num) += node->sons_num;
-    //             }   
-    //             getSumOfGradesAux(node->right_son,num,sum);
-    //             return;            
-    //         }
-    //         node = node->left_son;
-    //     }
-    //     while ( ((*num) < (node->sons_num)) && ((*num) > 0)  )
-    //     {
-    //         if( node->right_son == nullptr)
-    //         {
-    //             if( node->sons_num >= (*num) ) 
-    //             {   
-    //                 (*sum) += node->sons_sum;
-    //                 (*num) -= node->sons_num;
-    //             }   
-    //             getSumOfGradesAux(node->left_son,num,sum);
-    //             return;            
-    //         }
-    //         node = node->right_son;
-    //     }
-
-    //     if( node->parent == nullptr)
-    //     {
-    //         (*sum) + node->sons_sum;
-    //         (*num) -= node->sons_num;
-    //         getSumOfGradesAux(node->left_son,num,sum);
-    //     }
-
-    //     node = node->parent;
-
-    //     if( (*num) <= node->sons_num + node->right_son->sons_num )
-    //     {
-            
-    //         return;
-    //     }
-        
-    //     return getSumOfGradesAux(node->left_son,num,sum);
-        
-    // }
-
-    // void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,int *sum, int *num)
-    // {
-    //     if (node == nullptr || (*num) == 0)
-    //     {
-    //         return;
-    //     }
-
-    //     while ( ( (*num) < 0 ) && ( std::abs(*num) < getSonsNumOnly(node) ) )
-    //     {
-    //         if ( node->right_son == nullptr)
-    //         {
-    //             (*num) += getSonsNumOnly(node);
-    //             (*sum) += getSonsSumOnly(node);
-                
-    //             return;
-    //         }
-    //         node = node->right_son;
-    //     }
-
-    //     while ( ( (*num) > 0 ) && ( (*num) < getSonsNumOnly(node) ) )
-    //     {
-    //         if ( node->left_son == nullptr)
-    //         {
-    //             (*num) -= getSonsNumOnly(node);
-    //             (*sum) -= getSonsSumOnly(node);
-    //             getSumOfGradesAux(node->right_son,sum,num);
-    //             return;
-    //         }
-    //         node = node->left_son;
-    //     }
-
-    //     if (node->parent == nullptr)
-    //     {
-            
-    //         return;
-    //     }
-        
-    //     node = node->parent;
-
-    //     if ()
-    //     {
-            
-    //     }
-
-    //     return getSumOfGradesAux(node->right_son,sum,num);
-    // }
-
     int MultiStructures::getNodeSumInSubTree(tree_node<SalaryID,shared_ptr<Employee>> * node)
     {
         if (node == nullptr)
@@ -415,29 +166,54 @@ namespace ULIFB
         return node->sons_sum;
     }
 
+    int MultiStructures::getNodeNumInSubTree(tree_node<SalaryID,shared_ptr<Employee>> * node)
+    {
+        if (node == nullptr)
+        {
+            return 0;
+        }
+        return node->sons_num;
+    }
+
     void MultiStructures::getSumOfGradesAux(tree_node<SalaryID,shared_ptr<Employee>> * node,int *sum, int *num)
     {
+        // slightly modified solution, maybe wrong!
+        // if (node == nullptr || (*num) == 0)
+        // {
+        //     return;
+        // }
+        // if ( ( (*num) - ( node->sons_num - getNodeNumInSubTree(node->left_son) ) ) < 0 ) // counted too many nodes
+        // {
+        //    return getSumOfGradesAux(node->right_son,sum,num);
+        // }
+
+        // if ( (*num) > 0 )
+        // {
+        //     (*num) -= ( node->sons_num - getNodeNumInSubTree(node->left_son) );
+        //     (*sum) += ( node->sons_sum - getNodeSumInSubTree(node->left_son) );            
+        //     return getSumOfGradesAux(node->left_son,sum,num);
+        //     // original
+        // }
+        
+        // if ( (*num) < 0 )
+        // {
+        //     (*num) += ( node->sons_num - getNodeNumInSubTree(node->left_son) );
+        //     (*sum) -= ( node->sons_sum - getNodeSumInSubTree(node->left_son) );            
+        //     return getSumOfGradesAux(node->right_son,sum,num);
+        //     // added
+        // }
+
         if (node == nullptr || (*num) == 0)
         {
             return;
         }
-        if ( (*num) < 0 ) // counted too many nodes
+        if ( ( (*num) - ( node->sons_num - getNodeNumInSubTree(node->left_son) ) ) < 0 ) // counted too many nodes
         {
-            (*num) += node->sons_num;
-            (*sum) -= node->sons_sum;
-            return getSumOfGradesAux(node->right_son,sum,num);
+           return getSumOfGradesAux(node->right_son,sum,num);
         }
-
-        if ( (*num) > 0 ) // need to count more nodes
-        {
-            (*num) -= node->sons_num;
-            (*sum) += node->sons_sum;
-            return getSumOfGradesAux(node->left_son,sum,num);
-        }
-        
-        node = node->parent;
-
-        getSumOfGradesAux(node->left_son,sum,num);
+        (*num) -= ( node->sons_num - getNodeNumInSubTree(node->left_son) );
+        (*sum) += ( node->sons_sum - getNodeSumInSubTree(node->left_son) );            
+        return getSumOfGradesAux(node->left_son,sum,num);
         
     }
 
@@ -463,29 +239,21 @@ namespace ULIFB
     int MultiStructures::SumOfBumpGradeBetweenTopWorkersByGroup(int number_of_top_workers)
     {
         // complexity is O(log*(k) + log(n))  
-        // tree_node<SalaryID,shared_ptr<Employee>> *emp_to_find = this->employees_with_salary.Select(employees_with_salary.root,employees_with_salary.size - number_of_top_workers + 1 );
-        // if( emp_to_find == nullptr)
-        // {
-        //     // was not found!
-        //     return -1; // only returns this if the employee was not found! ie, there's no employee whose rank in number_of_top_worker!
-        // }
-        // return(this->employees_with_salary.findSumSmaller(emp_to_find->data->get()->getEmployeeSalaryID()) + emp_to_find->sum ); // is this the correct implementation of finding the sum of sons?
-        // return( emp_to_find->sons_sum ); // is this the correct implementation of finding the sum of sons?
+
         int sum = 0;
         int num = 0;
         // start the search from the most right node!
         tree_node<SalaryID,shared_ptr<Employee>> *current = findNodeWithSufficientSons(this->employees_with_salary.max,number_of_top_workers);
         if (current == nullptr)
         {
-            return -1; // the number of top workers is too big!
+            return -1; // the number of top workers is too big, we don't have that many workers!
         }
-        // num = current->sons_num;
-        // sum = current->sons_sum;
+
         num = number_of_top_workers;
         sum = 0;
         getSumOfGradesAux(current,&sum,&num);
         int x=0;
-        if (sum == 5)
+        if (sum == 134)
         {
             x = 9;
         }

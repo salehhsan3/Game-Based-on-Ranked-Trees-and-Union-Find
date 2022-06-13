@@ -22,6 +22,16 @@ namespace ULIFB
         return(this->value);
     }
 
+    void Company::updateEnterpriseValue(double new_value)
+    {
+        this->enterprise_value = new_value;
+    }
+
+    double Company::getEnterpriseValue()
+    {
+        return(this->enterprise_value);
+    }
+
     void Company::IncreaseCompanyValue(double increase)
     {
         //correct implementation?

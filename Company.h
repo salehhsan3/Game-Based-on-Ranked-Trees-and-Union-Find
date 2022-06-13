@@ -14,11 +14,13 @@ namespace ULIFB
     private:
         int id;
         double value;
+        double enterprise_value;
         MultiStructures employees;
     public:
         Company(int id = 0):
             id(id),
             value((double)id), // maybe better to convert the integer into a double
+            enterprise_value(double(id)),
             employees()
         {}
         ~Company() = default;
@@ -27,6 +29,8 @@ namespace ULIFB
         MultiStructures* getEmployeesMultiStructures();
         int getCompanyId();
         double getCompanyValue();
+        double getEnterpriseValue();
+        void updateEnterpriseValue(double new_value);
         void setCompanyValue( double value);
         void IncreaseCompanyValue(double increase);
                                 // the following fuctions are potentially not needed! //
