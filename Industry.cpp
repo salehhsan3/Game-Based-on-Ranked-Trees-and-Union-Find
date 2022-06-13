@@ -26,6 +26,11 @@ namespace ULIFB
     StatusType Industry::AddEmployee(int employeeID, int companyID, int grade)
     {
         // saleh's implementation - to remove later!
+        if (employeeID == 356)
+        {
+            int x = 0;
+        }
+        
         if ( (employeeID <= 0) || (companyID <= 0) |( companyID > this->getNumberOfCompanies()) || (grade < 0) )
         {
             return INVALID_INPUT;
@@ -49,6 +54,10 @@ namespace ULIFB
     StatusType Industry::RemoveEmployee(int employeeID)
     {
         // complexity is O(log(n)) on average
+        if (employeeID == 356)
+        {
+            int x = 0;
+        }
         if (employeeID <= 0)
         {
             return INVALID_INPUT;
@@ -85,19 +94,34 @@ namespace ULIFB
         }
 
         int x = 0;
-        // if (companyID1 == 7  || companyID1 == 15 || companyID2 == 7 || companyID2 == 15)
-        // {
-        //     x++;
-        // }
-        if (companyID1 == 5 || companyID2 == 5)
+        if (companyID1 == 19  || companyID1 == 18 || companyID2 == 19 || companyID2 == 18)
+        {
+            x++;
+        }
+        if (companyID1 == 11 || companyID2 == 11 || companyID1 == 2 || companyID2 == 2 || companyID1 == 16 || companyID2 == 16)
+        {
+            x++;
+        }
+        if (companyID1 == 11 || companyID2 == 11 || companyID1 == 2 || companyID2 == 2 || companyID1 == 7 || companyID2 == 7 || companyID1 == 4 || companyID2 == 4 || companyID1 == 6 || companyID2 == 6 || companyID1 == 18 || companyID2 == 18 || companyID1 == 19 || companyID2 == 19 || companyID1 == 20 || companyID2 == 20)
+        {
+            x++;
+        }
+        if (companyID1 == 11 || companyID2 == 11 || companyID1 == 2 || companyID2 == 2 || companyID1 == 5 || companyID2 == 5 || companyID1 == 8 || companyID2 == 8 || companyID1 == 13 || companyID2 == 13 || companyID1 == 14 || companyID2 == 14 || companyID1 == 16 || companyID2 == 16 || companyID1 == 20 || companyID2 == 20|| companyID1 == 17 || companyID2 == 17)
         {
             x++;
         }
         // double value_increase = ((target->getCompanyValue() - target_node->offset) * factor); // po ssible wroooooooong UF - saleh
-        double value_increase = ( target->getCompanyValue() * factor); 
-        this->companies_union.UnionGroups(companyID1,companyID2,value_increase);
+        // double target_value = findSpecificCompanyValue(target,companyID2);
+        // double value_increase = ( target->getCompanyValue() * factor);
+        double value_increase = ( target->getEnterpriseValue() * factor); 
+        // double value_increase = ( target_value * factor); 
+        Up_Tree_node<int,Company*> *new_root = this->companies_union.UnionGroups(companyID1,companyID2,value_increase);    
         Company* new_owner = this->companies_union.find(companyID1)->data; // this is the root of the group!
-        new_owner->IncreaseCompanyValue(value_increase);
+        if (new_root != target_node)
+        {
+            new_owner->IncreaseCompanyValue(value_increase);
+        }
+        // new_owner->IncreaseCompanyValue(value_increase);
         if (new_owner->getCompanyId() == acquirer->getCompanyId() )
         {
             new_owner->getEmployeesMultiStructures()->MergeStructures(target->getEmployeesMultiStructures(),new_owner->getCompanyId());
@@ -106,14 +130,18 @@ namespace ULIFB
         {
             new_owner->getEmployeesMultiStructures()->MergeStructures(acquirer->getEmployeesMultiStructures(),new_owner->getCompanyId());
         }
-        this->companies_union.find(7);
-        this->companies_union.find(15);
+        // this->companies_union.find(7);
+        // this->companies_union.find(15);
         return SUCCESS;
     }
 
     StatusType Industry::EmployeeSalaryIncrease(int employeeID, int salaryIncrease)
     {
         // complexity is O(log(n))! on average
+        if (employeeID == 356)
+        {
+            int x = 0;
+        }
         if (employeeID <= 0  || salaryIncrease <= 0)
         {
             return INVALID_INPUT;
@@ -150,6 +178,10 @@ namespace ULIFB
 
     StatusType Industry::PromoteEmployee(int employeeID, int bumpGrade)
     {
+        if (employeeID == 356)
+        {
+            int x = 0;
+        }
         if (employeeID <= 0 )
         {
             return INVALID_INPUT;
@@ -200,6 +232,11 @@ namespace ULIFB
         {
             return FAILURE;
         }
+        if (sum ==1287)
+        {
+            sum = multi->SumOfBumpGradeBetweenTopWorkersByGroup(m);
+        }
+        
         
         (*(int *)sumBumpGrade) = sum;
         
@@ -212,87 +249,115 @@ namespace ULIFB
         {
             return INVALID_INPUT;
         }
+        if (companyID == 0){
+            shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
+            SalaryID max_sal_id = SalaryID(higherSalary, max_id+1);
+            shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
+            SalaryID min_sal_id = SalaryID(lowerSalary, 0);
 
-        MultiStructures *multi =  (companyID == 0) ? this->getEmployeesMultiStructures() : companies_union.find(companyID)->data->getEmployeesMultiStructures(); // get the correct multistructure to work with!
+            //add fakes to tree
+            AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = employees.getEmployeesWithSalaryTree();
+            tree->addNode(max_sal_id, fake_max, 0);
+            tree->addNode(min_sal_id, fake_min, 0);
 
-        double average = multi->AverageBumpGradeBetweenSalaryByGroup(lowerSalary,higherSalary);
-        if (average < 0 )
-        {
+            int num_of_employees_in_bounds = 0;
+            double sum_of_grades = 0;
+
+            int rank1 = tree->findRank(max_sal_id);
+            int rank2 = tree->findRank(min_sal_id);
+
+            int sum1 = tree->findSumSmaller(max_sal_id);
+            int sum2 = tree->findSumSmaller(min_sal_id);
+
+            num_of_employees_in_bounds = rank1 - rank2 -1;
+            sum_of_grades = sum1 - sum2;
+
+            if (lowerSalary == 0){
+                num_of_employees_in_bounds += employees.getNumOfEmployeesWithNoSalary();
+                sum_of_grades += employees.getSumOfGradesForEmployeesWithNoSalary();
+            }
+            tree->removeNode(max_sal_id); // potential bugs?
+            tree->removeNode(min_sal_id);
+            if (num_of_employees_in_bounds == 0){
+                return FAILURE;
+            }
+            *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);
+
+           ////////////////////////// to remove!!!!!!!!!!!!!!!!
+            int temp = (int)(*((double*)averageBumpGrade) * 10);
+            double average = ((double)temp)/10;
+            if(abs(average + 0.1 - *((double*)averageBumpGrade)) <= 0.0000000001){
+                average += 0.1;
+            }
+            *(double*)averageBumpGrade = average;
+            //////////////////////////// to remove!!!!!!!!!!!!!!
+
+            if (average == 3.8)
+            {
+                int x = 0;
+            }
+            
+
+            return SUCCESS;
+        }
+
+        Company* company = companies_union.find(companyID)->data;
+        shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
+        SalaryID max_sal_id = SalaryID(higherSalary, max_id+1);
+        shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
+        SalaryID min_sal_id = SalaryID(lowerSalary, 0);
+
+        //add fakes to tree
+        AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = company->getEmployeesMultiStructures()->getEmployeesWithSalaryTree();
+        tree->addNode(max_sal_id, fake_max, 0);
+        tree->addNode(min_sal_id, fake_min, 0);
+
+        int num_of_employees_in_bounds = 0;
+        double sum_of_grades = 0;
+
+        int rank1 = tree->findRank(max_sal_id);
+        int rank2 = tree->findRank(min_sal_id);
+
+        int sum1 = tree->findSumSmaller(max_sal_id);
+        int sum2 = tree->findSumSmaller(min_sal_id);
+
+        num_of_employees_in_bounds = rank1 - rank2 - 1 ;
+        sum_of_grades = sum1 - sum2;
+
+        if (lowerSalary == 0){
+            num_of_employees_in_bounds += company->getEmployeesMultiStructures()->getNumOfEmployeesWithNoSalary();
+            sum_of_grades += company->getEmployeesMultiStructures()->getSumOfGradesForEmployeesWithNoSalary();
+        }
+//        tree->removeNode(max_sal_id);
+//        tree->removeNode(min_sal_id);
+        if (num_of_employees_in_bounds == 0){
             return FAILURE;
         }
-        (*(double *)averageBumpGrade) = average;
+        tree->removeNode(max_sal_id);
+        tree->removeNode(min_sal_id);
+        *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);
+
+        ////////////////////////// to remove!!!!!!!!!!!!!!!!
+            int temp = (int)(*((double*)averageBumpGrade) * 10);
+            double average = ((double)temp)/10;
+            if(abs(average + 0.1 - *((double*)averageBumpGrade)) <= 0.0000000001){
+                average += 0.1;
+            }
+            *(double*)averageBumpGrade = average;
+            //////////////////////////// to remove!!!!!!!!!!!!!!
+            if (average == 3.8)
+            {
+                int x = 0;
+            }
         return SUCCESS;
+    }
 
-        // if (companyID == 0){
-        //     shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
-        //     SalaryID max_sal_id = SalaryID(0, max_id+1);
-        //     shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
-        //     SalaryID min_sal_id = SalaryID(0, 0);
-
-        //     //add fakes to tree
-        //     AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = employees.getEmployeesWithSalaryTree();
-        //     tree->addNode(max_sal_id, fake_max, 0);
-        //     tree->addNode(min_sal_id, fake_min, 0);
-
-        //     int num_of_employees_in_bounds = 0;
-        //     int sum_of_grades = 0;
-
-        //     int rank1 = tree->findRank(max_sal_id);
-        //     int rank2 = tree->findRank(min_sal_id);
-
-        //     int sum1 = tree->findSumSmaller(max_sal_id);
-        //     int sum2 = tree->findSumSmaller(min_sal_id);
-
-        //     num_of_employees_in_bounds = rank1 - rank2 -1;
-        //     sum_of_grades = sum1 - sum2;
-
-        //     if (lowerSalary == 0){
-        //         num_of_employees_in_bounds += employees.getNumOfEmployeesWithNoSalary();
-        //         sum_of_grades += employees.getSumOfGradesForEmployeesWithNoSalary();
-        //     }
-        //     tree->removeNode(max_sal_id);
-        //     tree->removeNode(min_sal_id);
-        //     if (num_of_employees_in_bounds == 0){
-        //         return FAILURE;
-        //     }
-        //     *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);
-        //     return SUCCESS;
-        // }
-
-        // Company* company = companies_union.find(companyID)->data;
-        // shared_ptr<Employee> fake_max = make_shared<Employee>(max_id+1,0,0,higherSalary);
-        // SalaryID max_sal_id = SalaryID(0, max_id+1);
-        // shared_ptr<Employee> fake_min = make_shared<Employee>(0,0,0,lowerSalary);
-        // SalaryID min_sal_id = SalaryID(0, 0);
-
-        // //add fakes to tree
-        // AVL_Tree<SalaryID,shared_ptr<Employee>>* tree = company->getEmployeesMultiStructures()->getEmployeesWithSalaryTree();
-        // tree->addNode(max_sal_id, fake_max, 0);
-        // tree->addNode(min_sal_id, fake_min, 0);
-
-        // int num_of_employees_in_bounds = 0;
-        // int sum_of_grades = 0;
-
-        // int rank1 = tree->findRank(max_sal_id);
-        // int rank2 = tree->findRank(min_sal_id);
-
-        // int sum1 = tree->findSumSmaller(max_sal_id);
-        // int sum2 = tree->findSumSmaller(min_sal_id);
-
-        // num_of_employees_in_bounds = rank1 - rank2 -1;
-        // sum_of_grades = sum1 - sum2;
-
-        // if (lowerSalary == 0){
-        //     num_of_employees_in_bounds += company->getEmployeesMultiStructures()->getNumOfEmployeesWithNoSalary();
-        //     sum_of_grades += company->getEmployeesMultiStructures()->getSumOfGradesForEmployeesWithNoSalary();
-        // }
-        // tree->removeNode(max_sal_id);
-        // tree->removeNode(min_sal_id);
-        // if (num_of_employees_in_bounds == 0){
-        //     return FAILURE;
-        // }
-        // *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);/////////////check
-        // return SUCCESS;
+    double Industry::findSpecificCompanyValue(Company* comp,int companyID)
+    {
+        double owner_value = comp->getCompanyValue();
+        double offset = companies_union.findOffSet(companyID);
+        double real_value = owner_value - offset;
+        return real_value;
     }
 
     StatusType Industry::CompanyValue(int companyID, void * standing)
@@ -305,7 +370,7 @@ namespace ULIFB
 
         Company* comp_to_find = companies_union.find(companyID)->data;
         // we know that the company has to exist because its ID is legal therefore there's no need to check if it was found.
-        if (companyID == 5 )
+        if (companyID == 11 )
         {
             int x = 0;
         }
@@ -314,7 +379,7 @@ namespace ULIFB
         double offset = companies_union.findOffSet(companyID);
         double real_value = owner_value - offset;
         (*(double *)standing) = real_value;
-        if (companyID == 5 && real_value == 28)
+        if (companyID == 8 && real_value == 533)
         {
             int x = 0;
             offset = companies_union.findOffSet(companyID);

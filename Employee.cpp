@@ -32,7 +32,7 @@ namespace ULIFB
     {
         if (bump > 0)
         {
-            this->grade++;
+            this->grade+= bump;
         }
         return;
     }
