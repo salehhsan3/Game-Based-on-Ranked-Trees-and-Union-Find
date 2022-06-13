@@ -71,13 +71,13 @@ namespace ULIFB
         if (emp_to_find->getEmployeeSalary() == 0) //different case depending on the employee's salary!
         {
             this->number_of_employees_with_no_salary--;
-            this->total_num_of_employees--; // saleh, added --
             this->sum_of_grades_for_emp_with_no_salary -= emp_to_find->getEmployeeGrade();
             employees.deleteElement(emp_id);
+            this->total_num_of_employees--; // saleh, added --
             return;
         }
         // else if salary is bigger than zero remove him from the tree!
-        employees_with_salary.removeNode(SalaryID(emp_to_find->getEmployeeSalary(),emp_id));
+        employees_with_salary.removeNode(emp_to_find->getEmployeeSalaryID());
         employees.deleteElement(emp_id);
         this->total_num_of_employees--; // saleh, added --
     }

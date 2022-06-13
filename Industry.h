@@ -56,11 +56,11 @@ namespace ULIFB
 
         StatusType PromoteEmployee(int employeeID, int bumpGrade);
 
-        StatusType SumOfBumpGradeBetweenTopWorkersByGroup(int companyID, int m, void * sumBumpGrade);
+        StatusType SumOfBumpGradeBetweenTopWorkersByGroup(int companyID, int m);
 
-        StatusType AverageBumpGradeBetweenSalaryByGroup(int companyID, int lowerSalary, int higherSalary, void * averageBumpGrade);
+        StatusType AverageBumpGradeBetweenSalaryByGroup(int companyID, int lowerSalary, int higherSalary);
 
-        StatusType CompanyValue(int companyID, void * standing);
+        StatusType CompanyValue(int companyID);
         double findSpecificCompanyValue(Company* comp,int companyID);
 
         // 20 point Bonus function:

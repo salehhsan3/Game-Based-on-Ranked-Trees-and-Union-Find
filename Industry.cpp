@@ -217,7 +217,7 @@ namespace ULIFB
         return SUCCESS;
     }
 
-    StatusType Industry::SumOfBumpGradeBetweenTopWorkersByGroup(int companyID, int m, void * sumBumpGrade)
+    StatusType Industry::SumOfBumpGradeBetweenTopWorkersByGroup(int companyID, int m)
     {
         // complexity is O(log*(k) + log(n)) amortized on average
         if (companyID < 0 || companyID > this->getNumberOfCompanies() || m <= 0)
@@ -232,20 +232,19 @@ namespace ULIFB
         {
             return FAILURE;
         }
-        if (sum ==1287)
+        if (sum == 44)
         {
             sum = multi->SumOfBumpGradeBetweenTopWorkersByGroup(m);
         }
         
-        
-        (*(int *)sumBumpGrade) = sum;
+        printf("SumOfBumpGradeBetweenTopWorkersByGroup: %d\n", sum); // correct form???
         
         return SUCCESS;
     }
 
-    StatusType Industry::AverageBumpGradeBetweenSalaryByGroup(int companyID, int lowerSalary, int higherSalary, void * averageBumpGrade)
+    StatusType Industry::AverageBumpGradeBetweenSalaryByGroup(int companyID, int lowerSalary, int higherSalary)
     {
-        if (higherSalary < 0 || lowerSalary < 0 || (lowerSalary > higherSalary) || companyID < 0 || (companyID > this->getNumberOfCompanies()) || averageBumpGrade == nullptr)
+        if (higherSalary < 0 || lowerSalary < 0 || (lowerSalary > higherSalary) || companyID < 0 || (companyID > this->getNumberOfCompanies()) )
         {
             return INVALID_INPUT;
         }
@@ -281,21 +280,17 @@ namespace ULIFB
             if (num_of_employees_in_bounds == 0){
                 return FAILURE;
             }
-            *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);
 
-           ////////////////////////// to remove!!!!!!!!!!!!!!!!
-            int temp = (int)(*((double*)averageBumpGrade) * 10);
-            double average = ((double)temp)/10;
-            if(abs(average + 0.1 - *((double*)averageBumpGrade)) <= 0.0000000001){
-                average += 0.1;
+            double average = (sum_of_grades/num_of_employees_in_bounds);
+            ////////////////////////// to remove!!!!!!!!!!!!!!!!
+            int temp = (int)( average * 10);
+            double improved_average = ((double)temp)/10;
+            if(abs(improved_average + 0.1 - average ) <= 0.0000000001){
+                improved_average += 0.1;
             }
-            *(double*)averageBumpGrade = average;
+            average = improved_average;
             //////////////////////////// to remove!!!!!!!!!!!!!!
-
-            if (average == 3.8)
-            {
-                int x = 0;
-            }
+            printf("AverageBumpGradeBetweenSalaryByGroup: %.1f\n", average);
             
 
             return SUCCESS;
@@ -335,20 +330,17 @@ namespace ULIFB
         }
         tree->removeNode(max_sal_id);
         tree->removeNode(min_sal_id);
-        *(double*)averageBumpGrade = (sum_of_grades/num_of_employees_in_bounds);
+        double average = (sum_of_grades/num_of_employees_in_bounds);
 
         ////////////////////////// to remove!!!!!!!!!!!!!!!!
-            int temp = (int)(*((double*)averageBumpGrade) * 10);
-            double average = ((double)temp)/10;
-            if(abs(average + 0.1 - *((double*)averageBumpGrade)) <= 0.0000000001){
-                average += 0.1;
+            int temp = (int)( average * 10);
+            double improved_average = ((double)temp)/10;
+            if(abs(improved_average + 0.1 - average ) <= 0.0000000001){
+                improved_average += 0.1;
             }
-            *(double*)averageBumpGrade = average;
+            average = improved_average;
             //////////////////////////// to remove!!!!!!!!!!!!!!
-            if (average == 3.8)
-            {
-                int x = 0;
-            }
+            printf("AverageBumpGradeBetweenSalaryByGroup: %.1f\n", average);
         return SUCCESS;
     }
 
@@ -360,10 +352,10 @@ namespace ULIFB
         return real_value;
     }
 
-    StatusType Industry::CompanyValue(int companyID, void * standing)
+    StatusType Industry::CompanyValue(int companyID)
     {
         // complexity is O(log*(k)) amortized
-        if (standing == nullptr || companyID <= 0 || (companyID > this->getNumberOfCompanies()) )
+        if ( companyID <= 0 || (companyID > this->getNumberOfCompanies()) )
         {
             return INVALID_INPUT;
         }
@@ -378,12 +370,13 @@ namespace ULIFB
         double owner_value = comp_to_find->getCompanyValue();
         double offset = companies_union.findOffSet(companyID);
         double real_value = owner_value - offset;
-        (*(double *)standing) = real_value;
         if (companyID == 8 && real_value == 533)
         {
             int x = 0;
             offset = companies_union.findOffSet(companyID);
         }
+        
+        printf("CompanyValue: %.1f\n", real_value);
         
         return SUCCESS; 
         
